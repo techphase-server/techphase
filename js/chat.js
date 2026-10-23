@@ -1,11 +1,9 @@
 /* Tech Phase chat widget.
  * CHAT_WORKER_URL is the only place the Worker address is set.
- * Paste the deployed origin here, with no trailing slash, for example:
- *   https://techphase-chat.<account>.workers.dev
- * Leave the placeholder until `wrangler deploy` has printed a real URL.
- * This file never contains an API key. */
+ * Deployed Worker (no trailing slash). This file never contains an API key.
+ */
 (function () {
-  const CHAT_WORKER_URL = "https://YOUR-WORKER.workers.dev";
+  const CHAT_WORKER_URL = "https://techphase-chat.techphase-net.workers.dev";
   const EMAIL = "info@techphase.net";
   const SUGGESTIONS = ["What services do you offer?", "How do we start?", "I'd like a quote"];
 

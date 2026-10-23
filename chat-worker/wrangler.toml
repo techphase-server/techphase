@@ -1,6 +1,7 @@
 name = "techphase-chat"
 main = "src/index.js"
 compatibility_date = "2026-10-23"
+preview_urls = false
 
 # Public settings only. Do not put the API key in this file.
 # Set the key out of band: wrangler secret put XAI_API_KEY

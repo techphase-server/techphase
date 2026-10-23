@@ -2,7 +2,9 @@
 
 Cloudflare Worker that proxies the website chat widget to xAI's Grok API. The browser never sees the API key. The key lives only in the Worker secret `XAI_API_KEY`.
 
-The widget is `js/chat.js` on the static site. It reads one config constant, `CHAT_WORKER_URL`.
+The widget is `js/chat.js` on the static site. It reads one config constant, `CHAT_WORKER_URL`, which is set to the deployed Worker:
+
+https://techphase-chat.techphase-net.workers.dev
 
 ## What it does
 
@@ -38,7 +40,7 @@ npx wrangler deploy
 
 `wrangler secret put` prompts for the key. Do not pass the key on the command line, and do not write it into `wrangler.toml`, `.dev.vars` that you commit, or the website.
 
-`wrangler deploy` prints the worker URL, similar to `https://techphase-chat.<account>.workers.dev`.
+The deployed Worker is https://techphase-chat.techphase-net.workers.dev. `preview_urls` is off in `wrangler.toml`, so Wrangler does not publish a separate preview URL. `wrangler deploy` updates that same Worker.
 
 To turn on lead email after FormSubmit is activated for `info@techphase.net`:
 
@@ -59,15 +61,15 @@ npx wrangler dev
 
 `.dev.vars` is gitignored. `wrangler dev` serves `http://127.0.0.1:8787`.
 
-## Paste the Worker URL
+## Worker URL
 
-Open `js/chat.js` and replace the placeholder:
+`js/chat.js` already points at the deployed origin, with no trailing slash:
 
 ```javascript
-const CHAT_WORKER_URL = "https://techphase-chat.<account>.workers.dev";
+const CHAT_WORKER_URL = "https://techphase-chat.techphase-net.workers.dev";
 ```
 
-Use the origin `wrangler deploy` printed, with no path and no trailing slash. Commit that change and let GitHub Pages publish it. Until the placeholder is replaced, the widget opens and tells visitors to email `info@techphase.net`. It does not call xAI from the browser.
+That constant is the only place the address is set. The page still never contains the API key. If the constant is emptied, the widget opens and tells visitors to email `info@techphase.net`.
 
 ## How to test
 
@@ -92,4 +94,15 @@ curl -i -X POST http://127.0.0.1:8787/chat \
 
 That response is `403` and has no `Access-Control-Allow-Origin` header.
 
-3. Widget: put the worker origin in `CHAT_WORKER_URL`, serve the site (`python3 -m http.server 8000`), and open `http://localhost:8000`. Use the chat button at the bottom right. Ask what Tech Phase does, then ask for a price. The price answer should refuse to invent a number and offer to collect your name, email, and project details. On a phone-width window, the panel fills the screen, Escape closes it, and a failed request shows `info@techphase.net`.
+3. Deployed Worker, from any machine:
+
+```bash
+curl -i -X POST https://techphase-chat.techphase-net.workers.dev/chat \
+  -H 'Origin: https://techphase.net' \
+  -H 'Content-Type: application/json' \
+  -d '{"messages":[{"role":"user","content":"What services do you offer?"}]}'
+```
+
+An `Origin` of `https://example.com` should come back `403` with no `Access-Control-Allow-Origin` header.
+
+4. Widget: serve the site (`python3 -m http.server 8000`) and open `http://localhost:8000`. `CHAT_WORKER_URL` already points at https://techphase-chat.techphase-net.workers.dev. Use the chat button at the bottom right. Ask what Tech Phase does, then ask for a price. The price answer should refuse to invent a number and offer to collect your name, email, and project details. On a phone-width window, the panel fills the screen, Escape closes it, and a failed request shows `info@techphase.net`.
