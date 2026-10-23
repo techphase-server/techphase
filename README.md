@@ -42,6 +42,6 @@ The floating chat panel is `js/chat.js`. It calls the deployed Cloudflare Worker
 
 ## Contact
 
-info@techphase.net · +92 333 2832914
+info@techphase.net · +1 (260) 239-4557
 
 Both forms (the contact section and the "Start a project" dialog) `POST` JSON to `${CHAT_WORKER_URL}/lead`. The Worker sends a Tech Phase notification to the team and a short auto-reply to the visitor through [Resend](https://resend.com). The Resend API key is the Worker secret `RESEND_API_KEY` and is not in this repo. `techphase.net` has to be verified in Resend before those messages deliver. A hidden honeypot field is the spam check. If sending fails, the form shows an error and a `mailto:` link to info@techphase.net.

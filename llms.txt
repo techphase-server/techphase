@@ -1,0 +1,23 @@
+# Tech Phase
+
+> Tech Phase (techphase.net) is a Pakistan-based sole proprietorship founded and led by Tahir Ayub. It works as a white-label delivery partner for US digital agencies, and also works directly with US founders and small businesses. Services: web design and development (WordPress, Shopify, Webflow, custom), app and MVP development, UI/UX design, SEO, UGC ads and video editing, 2D/3D animation, AI automation (n8n, Zapier, AI chatbots) and technology consulting.
+
+Key facts:
+- Location: Pakistan (remote delivery; no US office).
+- Clients: primarily US agencies (white-label) and US small businesses/startups.
+- Working hours: live overlap with US Eastern mornings on weekdays; asynchronous work outside that window.
+- Pricing: fixed quotes in USD per project, or monthly capacity for agencies.
+- White-label: no Tech Phase branding on deliverables; does not contact an agency's clients unless asked.
+- Ownership: clients own code, designs and accounts once paid.
+- Contact: info@techphase.net · https://techphase.net/#contact
+
+## Pages
+- [Home](https://techphase.net/): overview of services and how Tech Phase works with US agencies and founders
+- [Privacy Policy](https://techphase.net/#privacy)
+- [Terms & Conditions](https://techphase.net/#terms)
+- [Refund & Return Policy](https://techphase.net/#refund)
+
+## Planned pages (add links when live)
+- White-label services for agencies: https://techphase.net/white-label/
+- AI automation: https://techphase.net/ai-automation/
+- Web design: https://techphase.net/web-design/
