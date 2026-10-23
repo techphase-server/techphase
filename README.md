@@ -36,3 +36,5 @@ Site URL: https://techphase-server.github.io/techphase/
 ## Contact
 
 info@techphase.net · +92 333 2832914
+
+Both forms (the contact section and the "Start a project" dialog) submit with `fetch` to [FormSubmit](https://formsubmit.co/ajax/info@techphase.net). There is no backend and no API key. The first submission sends a one-time activation email to info@techphase.net; messages are delivered only after that link is opened. FormSubmit's reCAPTCHA is turned off so visitors stay on the page. A hidden honeypot field is the spam check.
