@@ -16,12 +16,15 @@ a{color:inherit;text-decoration:none}button{font:inherit;color:inherit;backgroun
 header{position:absolute;inset-inline:0;top:0;z-index:50}
 header .shell{display:flex;align-items:center;justify-content:space-between;gap:1.5rem;padding-block:1.25rem}
 .hd{display:flex;align-items:center;gap:.75rem;flex:none}
-.brand{display:flex;align-items:center;gap:.5rem;font-weight:600;font-size:1.125rem}.brand img{width:2rem}
+.brand{display:flex;align-items:center;gap:.5rem;flex:none;font-weight:600;font-size:1.125rem;white-space:nowrap}.brand img{width:2rem}
 nav ul{display:none;gap:2rem;font-size:.875rem;font-weight:500}@media(min-width:1024px){nav ul{display:flex}}
 nav a{opacity:.8;transition:.3s}nav a:hover{opacity:1}
 .chip,.hcall{display:inline-flex;align-items:center;justify-content:center;gap:.4rem;flex:none;border:1px solid rgba(230,229,226,.8);background:rgba(255,255,255,.4);backdrop-filter:blur(4px);border-radius:.875rem;padding:.5rem 1rem;font-size:.75rem;font-weight:500;line-height:1;text-transform:uppercase;letter-spacing:.05em;color:inherit;white-space:nowrap}
 .hcall svg{width:1em;height:1em;display:block;flex:none}
 @media(max-width:1023px){
+header nav{display:none}
+header .shell{gap:.75rem}
+header .chip{padding-inline:.75rem}
 .hd{gap:8px}
 header .chip,header .hcall{min-height:44px}
 header .hcall{position:relative;width:44px;min-width:44px;padding:0}
