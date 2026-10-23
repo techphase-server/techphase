@@ -1,15 +1,26 @@
 /**
- * Tech Phase chat proxy.
+ * Tech Phase chat proxy and lead mail.
  * The browser talks to this worker. The worker adds the system prompt and
- * calls xAI with the XAI_API_KEY secret. The key is never logged or returned.
+ * calls xAI with the XAI_API_KEY secret. Contact forms POST /lead, and the
+ * worker sends branded mail through Resend with RESEND_API_KEY.
+ * Neither key is logged or returned.
  *
  * Docs checked October 2026:
  *   https://docs.x.ai/developers/models
  *   https://docs.x.ai/developers/rest-api-reference/inference/chat
+ *   https://resend.com/docs/api-reference/emails/send-email
  * Chat model: grok-4.7 (override with the MODEL var).
  */
 
+import {
+  buildAutoReplyEmail,
+  buildNotificationEmail,
+} from "./lead-email.js";
+
 const XAI_URL = "https://api.x.ai/v1/chat/completions";
+const RESEND_URL = "https://api.resend.com/emails";
+const DEFAULT_LEAD_TO = "info@techphase.net";
+const DEFAULT_LEAD_FROM = "TechPhase <info@techphase.net>";
 
 const ALLOWED_ORIGINS = new Set([
   "https://techphase.net",
@@ -42,7 +53,18 @@ const SERVICES = [
 ];
 
 const buckets = new Map();
+const leadBuckets = new Map();
 const leadSends = new Map();
+
+const LEAD_LIMITS = {
+  name: 100,
+  email: 200,
+  phone: 40,
+  project: 4000,
+};
+
+const SERVICE_NAMES = new Set(SERVICES.map(([name]) => name).concat(["Other"]));
+const FORM_SOURCES = new Set(["Contact form", "Start a project"]);
 
 const NAME_BLOCK = new Set([
   "a", "an", "the", "interested", "looking", "hoping", "writing", "here", "from", "just", "not",
@@ -99,6 +121,7 @@ Write plain sentences. Do not use markdown, bullet lists, or emoji. Usually answ
 
 export function __resetForTests() {
   buckets.clear();
+  leadBuckets.clear();
   leadSends.clear();
 }
 
@@ -106,20 +129,20 @@ function clientIp(request) {
   return request.headers.get("cf-connecting-ip") || "unknown";
 }
 
-function rateLimit(ip, now = Date.now()) {
-  let hits = buckets.get(ip);
+function rateLimit(ip, now = Date.now(), store = buckets) {
+  let hits = store.get(ip);
   if (!hits) {
     hits = [];
-    buckets.set(ip, hits);
+    store.set(ip, hits);
   }
   const recent = hits.filter((t) => now - t < LIMITS.hourMs);
-  buckets.set(ip, recent);
+  store.set(ip, recent);
   const inMinute = recent.filter((t) => now - t < LIMITS.minuteMs).length;
   if (inMinute >= LIMITS.perMinute || recent.length >= LIMITS.perHour) return false;
   recent.push(now);
-  if (buckets.size > 5000) {
-    const oldest = buckets.keys().next().value;
-    buckets.delete(oldest);
+  if (store.size > 5000) {
+    const oldest = store.keys().next().value;
+    store.delete(oldest);
   }
   return true;
 }
@@ -233,13 +256,67 @@ function transcriptOf(messages) {
     .slice(0, 5000);
 }
 
-function leadEndpoint(env) {
-  // TODO(leads): return null until LEAD_EMAIL is set. See wrangler.toml.
-  const raw = String(env.LEAD_EMAIL || "").trim();
-  if (!raw) return null;
-  if (/^https:\/\/formsubmit\.co\/ajax\/[^\s]+$/i.test(raw)) return raw;
-  if (/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(raw)) return `https://formsubmit.co/ajax/${raw}`;
-  return null;
+function validEmail(email) {
+  return typeof email === "string"
+    && email.length >= 3
+    && email.length <= LEAD_LIMITS.email
+    && /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+}
+
+function resendKey(env) {
+  return typeof env.RESEND_API_KEY === "string" ? env.RESEND_API_KEY.trim() : "";
+}
+
+function leadTo(env) {
+  const raw = String(env.LEAD_TO || "").trim();
+  return validEmail(raw) ? raw : DEFAULT_LEAD_TO;
+}
+
+function leadFrom(env) {
+  const raw = String(env.LEAD_FROM || "").trim();
+  const match = raw.match(/^([^<>\r\n]{1,60}) <([^<>\s@]+@[^<>\s@]+\.[^<>\s@]+)>$/);
+  if (!match || !validEmail(match[2])) return DEFAULT_LEAD_FROM;
+  return `${match[1].trim()} <${match[2]}>`;
+}
+
+function honeypotFilled(value) {
+  if (value == null) return false;
+  if (typeof value === "string") return value.trim().length > 0;
+  return true;
+}
+
+function plainField(value, max, { newlines = false } = {}) {
+  if (typeof value !== "string") return "";
+  const trimmed = value.trim();
+  if (!trimmed || trimmed.length > max) return "";
+  const blocked = newlines
+    ? /[\u0000-\u0008\u000B\u000C\u000E-\u001F\u007F]/
+    : /[\u0000-\u001F\u007F]/;
+  if (blocked.test(trimmed)) return "";
+  return trimmed;
+}
+
+function validPhone(phone) {
+  if (phone.length < 8 || phone.length > LEAD_LIMITS.phone) return false;
+  if (!/^\+\d{1,4} [0-9()\-\s]+$/.test(phone)) return false;
+  const national = phone.replace(/^\+\d{1,4}\s/, "").replace(/\D/g, "");
+  return national.length >= 6 && national.length <= 15;
+}
+
+function parsePublicLead(body) {
+  const name = plainField(body.name, LEAD_LIMITS.name);
+  const email = plainField(body.email, LEAD_LIMITS.email);
+  const phone = plainField(body.phone, LEAD_LIMITS.phone);
+  const service = plainField(body.service, 80);
+  const project = plainField(body.project, LEAD_LIMITS.project, { newlines: true });
+  const source = plainField(body.source, 40);
+  if (!name || !validEmail(email) || !validPhone(phone)) return null;
+  if (!SERVICE_NAMES.has(service) || !FORM_SOURCES.has(source) || !project) return null;
+  return { name, email, phone, service, project, source };
+}
+
+function scrubText(value, keys) {
+  return keys.reduce((text, key) => redact(text, key), String(value ?? ""));
 }
 
 function shouldSendLead(email, hash, now = Date.now()) {
@@ -256,52 +333,86 @@ function shouldSendLead(email, hash, now = Date.now()) {
   return true;
 }
 
-async function deliverLead(env, lead) {
-  const endpoint = leadEndpoint(env);
-  if (!endpoint) return false;
-  const key = env.XAI_API_KEY || "";
-  const hash = `${lead.email}\n${lead.transcript}`;
-  if (!shouldSendLead(lead.email, hash)) return false;
+async function sendResend(env, message) {
+  const key = resendKey(env);
+  if (!key) return { ok: false, missing: true };
+  let response;
   try {
-    const response = await fetch(endpoint, {
+    response = await fetch(RESEND_URL, {
       method: "POST",
       headers: {
+        authorization: `Bearer ${key}`,
         "content-type": "application/json",
         accept: "application/json",
       },
       body: JSON.stringify({
-        name: redact(lead.name || "Website chat", key),
-        email: lead.email,
-        phone: "Not provided",
-        service: "Chat enquiry",
-        project: redact(lead.project, key),
-        source: "Website chat",
-        transcript: redact(lead.transcript, key),
-        _subject: `New chat lead — ${redact(lead.name || "Website chat", key)}`,
-        _replyto: lead.email,
-        _template: "table",
-        _captcha: "false",
+        from: message.from,
+        to: [message.to],
+        reply_to: message.replyTo,
+        subject: message.subject,
+        html: message.html,
+        text: message.text,
       }),
       signal: AbortSignal.timeout(8000),
     });
-    if (!response.ok) console.error("lead email failed", response.status);
-    await response.body?.cancel();
-    return response.ok;
   } catch (err) {
-    logError("lead email failed", err, key);
-    return false;
+    logError("resend failed", err, key);
+    return { ok: false };
   }
+  if (!response.ok) {
+    console.error("resend failed", response.status);
+    try {
+      await response.body?.cancel();
+    } catch {
+      /* discard upstream body */
+    }
+    return { ok: false };
+  }
+  try {
+    await response.body?.cancel();
+  } catch {
+    /* discard upstream body */
+  }
+  return { ok: true };
+}
+
+async function deliverChatLead(env, lead) {
+  const key = resendKey(env);
+  if (!key) return false;
+  const hash = `${lead.email}\n${lead.transcript}`;
+  if (!shouldSendLead(lead.email, hash)) return false;
+  const xai = typeof env.XAI_API_KEY === "string" ? env.XAI_API_KEY.trim() : "";
+  const keys = [xai, key].filter(Boolean);
+  const safe = {
+    name: scrubText(lead.name || "Website chat", keys),
+    email: scrubText(lead.email, keys),
+    phone: "Not provided",
+    service: "Chat enquiry",
+    project: scrubText(lead.project, keys),
+    source: "Website chat",
+    transcript: scrubText(lead.transcript, keys),
+  };
+  const mail = buildNotificationEmail(safe);
+  const sent = await sendResend(env, {
+    from: leadFrom(env),
+    to: leadTo(env),
+    replyTo: safe.email,
+    subject: mail.subject,
+    html: mail.html,
+    text: mail.text,
+  });
+  return sent.ok;
 }
 
 function queueLead(env, ctx, messages) {
   const email = findLeadEmail(messages);
-  if (!email || !leadEndpoint(env)) return;
+  if (!email || !resendKey(env)) return;
   const project = messages
     .filter((message) => message.role === "user")
     .map((message) => message.content)
     .join("\n")
     .slice(0, 2000);
-  const pending = deliverLead(env, {
+  const pending = deliverChatLead(env, {
     email,
     name: guessName(messages),
     project,
@@ -388,23 +499,51 @@ async function handleChat(request, env, ctx, origin) {
 
 async function handleLead(request, env, origin) {
   const body = await readBody(request);
-  if (body.error || !body.value || typeof body.value !== "object") return json({ error: "bad_request" }, 400, origin);
-  const email = typeof body.value.email === "string" ? body.value.email.trim() : "";
-  const details = typeof body.value.details === "string" ? body.value.details.trim() : "";
-  if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email) || email.length > 200 || details.length > 4000) {
+  if (body.error || !body.value || typeof body.value !== "object" || Array.isArray(body.value)) {
     return json({ error: "bad_request" }, 400, origin);
   }
-  if (!rateLimit(clientIp(request))) {
+  if (honeypotFilled(body.value._honey)) return json({ ok: true }, 200, origin);
+
+  const lead = parsePublicLead(body.value);
+  if (!lead) return json({ error: "bad_request" }, 400, origin);
+  if (!rateLimit(clientIp(request), Date.now(), leadBuckets)) {
     return json({ error: "rate_limited" }, 429, origin, { "retry-after": "60" });
   }
-  const name = typeof body.value.name === "string" ? body.value.name.trim().slice(0, 80) : "";
-  const delivered = await deliverLead(env, {
-    email,
-    name,
-    project: details.slice(0, 2000),
-    transcript: `Visitor: ${details}`.slice(0, 5000),
+
+  const key = resendKey(env);
+  if (!key) return json({ error: "unavailable" }, 503, origin);
+  const xai = typeof env.XAI_API_KEY === "string" ? env.XAI_API_KEY.trim() : "";
+  const keys = [xai, key].filter(Boolean);
+  const safe = {
+    name: scrubText(lead.name, keys),
+    email: scrubText(lead.email, keys),
+    phone: scrubText(lead.phone, keys),
+    service: scrubText(lead.service, keys),
+    project: scrubText(lead.project, keys),
+    source: scrubText(lead.source, keys),
+  };
+
+  const note = buildNotificationEmail(safe);
+  const sent = await sendResend(env, {
+    from: leadFrom(env),
+    to: leadTo(env),
+    replyTo: safe.email,
+    subject: note.subject,
+    html: note.html,
+    text: note.text,
   });
-  return json({ ok: true, delivered }, 200, origin);
+  if (!sent.ok) return json({ error: "unavailable" }, sent.missing ? 503 : 502, origin);
+
+  const reply = buildAutoReplyEmail(safe);
+  await sendResend(env, {
+    from: leadFrom(env),
+    to: safe.email,
+    replyTo: leadTo(env),
+    subject: reply.subject,
+    html: reply.html,
+    text: reply.text,
+  });
+  return json({ ok: true }, 200, origin);
 }
 
 export default {

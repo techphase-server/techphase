@@ -1,5 +1,9 @@
 import assert from "node:assert/strict";
+import { mkdirSync, readFileSync, writeFileSync } from "node:fs";
+import { dirname, join } from "node:path";
+import { fileURLToPath } from "node:url";
 import worker, { __resetForTests } from "./src/index.js";
+import { AUTO_REPLY_SUBJECT, LOGO_URL, buildAutoReplyEmail, buildNotificationEmail } from "./src/lead-email.js";
 
 const SECRET = "xai-test-secret-do-not-leak";
 const SERVICES_IN_PROMPT = [
@@ -21,7 +25,8 @@ function env(extra = {}) {
     MODEL: "grok-4.7",
     REASONING_EFFORT: "low",
     MAX_COMPLETION_TOKENS: "400",
-    LEAD_EMAIL: "",
+    LEAD_TO: "info@techphase.net",
+    LEAD_FROM: "TechPhase <info@techphase.net>",
     ...extra,
   };
 }
@@ -101,7 +106,7 @@ let net;
 try {
   net = installFetch(async (url) => {
     if (url.includes("api.x.ai")) return xaiReply("We design and build websites, apps, and brands.");
-    if (url.includes("formsubmit.co")) return new Response(JSON.stringify({ success: true }), { status: 200 });
+    if (url.includes("formsubmit.co")) throw new Error("formsubmit must not be called");
     throw new Error(`unexpected url ${url}`);
   });
 
@@ -320,86 +325,359 @@ try {
     assert.equal(response.json.error, "unavailable");
   }
 
+  const RESEND_KEY = "re_test_key_do_not_leak";
+  const previewLead = {
+    name: "Ada Lovelace",
+    email: "ada@example.com",
+    phone: "+44 20 7946 0958",
+    service: "Web Development",
+    project: "A bookshop website with online ordering & a request list for rare titles.\nWe'd like to launch in the spring.",
+    source: "Contact form",
+  };
+  const previewDir = join(dirname(fileURLToPath(import.meta.url)), "previews");
+  mkdirSync(previewDir, { recursive: true });
+  const previewNote = buildNotificationEmail(previewLead);
+  const previewReply = buildAutoReplyEmail(previewLead);
+  writeFileSync(join(previewDir, "notification.html"), previewNote.html);
+  writeFileSync(join(previewDir, "autoreply.html"), previewReply.html);
+  assert.equal(readFileSync(join(previewDir, "notification.html"), "utf8"), previewNote.html);
+  assert.equal(readFileSync(join(previewDir, "autoreply.html"), "utf8"), previewReply.html);
+  assert.match(previewNote.html, new RegExp(LOGO_URL.replace(/[.]/g, "\\.")));
+  assert.match(previewReply.html, /Thanks for contacting Tech Phase/);
+  assert.equal(/formsubmit|resend/i.test(previewNote.html + previewReply.html + previewNote.text + previewReply.text), false);
+  assert.equal(previewReply.subject, AUTO_REPLY_SUBJECT);
+
+  const hostile = buildNotificationEmail({
+    name: 'Ada <script>alert("x")</script>',
+    email: "ada@example.com",
+    phone: "+44 20 7946 0958",
+    service: "Web Development",
+    project: "Tom & Jerry\n<img src=x onerror=alert(1)>",
+    source: "Contact form",
+  });
+  assert.match(hostile.html, /&lt;script&gt;/);
+  assert.match(hostile.html, /Tom &amp; Jerry/);
+  assert.match(hostile.html, /&lt;img src=x onerror=alert\(1\)&gt;/);
+  assert.equal(hostile.html.includes("<script"), false);
+  assert.equal(hostile.html.includes("<img src=x"), false);
+  assert.match(hostile.html, /<img src="https:\/\/techphase\.net\/assets\/img\/logo-header\.png"/);
+  assert.match(hostile.text, /Tom & Jerry/);
+  assert.match(hostile.text, /<img src=x onerror=alert\(1\)>/);
+
+  function goodLead(extra = {}) {
+    return {
+      name: "Ada Lovelace",
+      email: "ada@example.com",
+      phone: "+92 333 2832914",
+      service: "Web Development",
+      project: "A bookshop website for the spring.",
+      source: "Contact form",
+      _honey: "",
+      ...extra,
+    };
+  }
+
+  function resendMessages(calls) {
+    return calls
+      .filter((call) => call.url === "https://api.resend.com/emails")
+      .map((call) => ({
+        url: call.url,
+        auth: authOf(call.init),
+        body: JSON.parse(call.init.body),
+      }));
+  }
+
   net.restore();
-  const leadCalls = [];
-  net = installFetch(async (url, init) => {
+  net = installFetch(async (url) => {
     if (url.includes("api.x.ai")) return xaiReply("Please email info@techphase.net with those details.");
-    if (url.startsWith("https://formsubmit.co/")) {
-      leadCalls.push({ url, body: JSON.parse(init.body) });
-      return new Response(JSON.stringify({ success: true }), { status: 200 });
-    }
+    if (url === "https://api.resend.com/emails") return new Response(JSON.stringify({ id: "email_123" }), { status: 200 });
+    if (url.includes("formsubmit.co")) throw new Error("formsubmit must not be called");
     throw new Error(`unexpected url ${url}`);
   });
 
   {
     __resetForTests();
-    leadCalls.length = 0;
+    const before = net.calls.length;
     const ctx = makeCtx();
     const response = await read(await worker.fetch(request("/chat", {
       body: { messages: [user("My name is Ada Lovelace. Email ada@example.com. I need a website for a bookshop.")] },
       ip: "203.0.113.40",
-    }), env({ LEAD_EMAIL: "" }), ctx));
+    }), env(), ctx));
     await drain(ctx);
     assert.equal(response.status, 200);
-    assert.equal(leadCalls.length, 0);
+    assert.equal(resendMessages(net.calls.slice(before)).length, 0);
   }
 
   {
     __resetForTests();
-    leadCalls.length = 0;
+    const before = net.calls.length;
     const ctx = makeCtx();
     await worker.fetch(request("/chat", {
       body: { messages: [user("Please write to info@techphase.net")] },
       ip: "203.0.113.41",
-    }), env({ LEAD_EMAIL: "info@techphase.net" }), ctx);
+    }), env({ RESEND_API_KEY: RESEND_KEY }), ctx);
     await drain(ctx);
-    assert.equal(leadCalls.length, 0);
+    assert.equal(resendMessages(net.calls.slice(before)).length, 0);
   }
 
   {
     __resetForTests();
-    leadCalls.length = 0;
+    const before = net.calls.length;
     const ctx = makeCtx();
+    const chatBody = { messages: [user("My name is Ada Lovelace. Email ada@example.com. I need a website for a bookshop.")] };
     const response = await read(await worker.fetch(request("/chat", {
-      body: { messages: [user("My name is Ada Lovelace. Email ada@example.com. I need a website for a bookshop.")] },
+      body: chatBody,
       ip: "203.0.113.42",
-    }), env({ LEAD_EMAIL: "info@techphase.net" }), ctx));
+    }), env({ RESEND_API_KEY: RESEND_KEY }), ctx));
     await drain(ctx);
+    const again = makeCtx();
+    await worker.fetch(request("/chat", {
+      body: chatBody,
+      ip: "203.0.113.42",
+    }), env({ RESEND_API_KEY: RESEND_KEY }), again);
+    await drain(again);
     assert.equal(response.status, 200);
-    assert.equal(leadCalls.length, 1);
-    assert.equal(leadCalls[0].url, "https://formsubmit.co/ajax/info@techphase.net");
-    assert.equal(leadCalls[0].body.email, "ada@example.com");
-    assert.equal(leadCalls[0].body.name, "Ada Lovelace");
-    assert.equal(leadCalls[0].body._replyto, "ada@example.com");
-    assert.equal(leadCalls[0].body._captcha, "false");
-    assert.equal(leadCalls[0].body._template, "table");
-    assert.equal(leadCalls[0].body.source, "Website chat");
-    assert.match(leadCalls[0].body.project, /bookshop/);
-    assert.equal(JSON.stringify(leadCalls[0].body).includes(SECRET), false);
+    const sent = resendMessages(net.calls.slice(before));
+    assert.equal(sent.length, 1);
+    assert.equal(sent[0].auth, `Bearer ${RESEND_KEY}`);
+    assert.equal(sent[0].body.from, "TechPhase <info@techphase.net>");
+    assert.deepEqual(sent[0].body.to, ["info@techphase.net"]);
+    assert.equal(sent[0].body.reply_to, "ada@example.com");
+    assert.equal(sent[0].body.subject, "New project request — Chat enquiry");
+    assert.match(sent[0].body.html, /Ada Lovelace/);
+    assert.match(sent[0].body.html, /Website chat/);
+    assert.match(sent[0].body.html, /bookshop/);
+    assert.match(sent[0].body.text, /bookshop/);
+    assert.equal(JSON.stringify(sent[0].body).includes(SECRET), false);
+    assert.equal(JSON.stringify(sent[0].body).includes(RESEND_KEY), false);
+    assert.equal(JSON.stringify(sent[0].body).includes("formsubmit"), false);
+  }
+
+  const rejected = [
+    [{}, "empty"],
+    [goodLead({ name: "" }), "blank name"],
+    [goodLead({ name: "A".repeat(101) }), "long name"],
+    [goodLead({ name: "Ada\nLovelace" }), "name newline"],
+    [goodLead({ email: "not-an-email" }), "email"],
+    [goodLead({ email: "a@b" }), "short email"],
+    [goodLead({ phone: "333 2832914" }), "phone missing country code"],
+    [goodLead({ phone: "+92" }), "phone too short"],
+    [goodLead({ phone: "+92 123" }), "phone too few digits"],
+    [goodLead({ service: "Hacking" }), "service"],
+    [goodLead({ project: "" }), "blank project"],
+    [goodLead({ project: "x".repeat(4001) }), "long project"],
+    [goodLead({ source: "Signup" }), "source"],
+    [goodLead({ source: "Contact form\nBcc: evil@example.com" }), "source newline"],
+  ];
+  for (const [body, label] of rejected) {
+    __resetForTests();
+    const before = net.calls.length;
+    const response = await read(await worker.fetch(request("/lead", {
+      body,
+      ip: "203.0.113.50",
+    }), env({ RESEND_API_KEY: RESEND_KEY })));
+    assert.equal(response.status, 400, label);
+    assert.equal(response.json.error, "bad_request", label);
+    assert.equal(resendMessages(net.calls.slice(before)).length, 0, label);
+    assert.equal(response.text.includes(RESEND_KEY), false);
   }
 
   {
     __resetForTests();
-    leadCalls.length = 0;
-    const evil = await read(await worker.fetch(request("/lead", {
-      body: { email: "ada@example.com", details: "A website" },
-      ip: "203.0.113.43",
-    }), env({ LEAD_EMAIL: "https://evil.example/hook" })));
-    assert.equal(evil.json.delivered, false);
-    assert.equal(leadCalls.length, 0);
+    const before = net.calls.length;
+    for (let i = 0; i < 15; i += 1) {
+      const response = await read(await worker.fetch(request("/lead", {
+        body: { _honey: "bot-filled", name: "<script>" },
+        ip: "203.0.113.51",
+      }), env({ RESEND_API_KEY: RESEND_KEY })));
+      assert.equal(response.status, 200);
+      assert.equal(response.json.ok, true);
+    }
+    assert.equal(resendMessages(net.calls.slice(before)).length, 0);
   }
 
   {
     __resetForTests();
-    leadCalls.length = 0;
-    const posted = await read(await worker.fetch(request("/lead", {
-      body: { name: "Ada Lovelace", email: "ada@example.com", details: "A bookshop website in the spring." },
-      ip: "203.0.113.44",
-    }), env({ LEAD_EMAIL: "https://formsubmit.co/ajax/info@techphase.net" })));
-    assert.equal(posted.json.delivered, true);
-    assert.equal(leadCalls.length, 1);
-    assert.equal(leadCalls[0].url, "https://formsubmit.co/ajax/info@techphase.net");
-    assert.equal(leadCalls[0].body.name, "Ada Lovelace");
+    const before = net.calls.length;
+    const response = await read(await worker.fetch(request("/lead", {
+      body: goodLead(),
+      origin: "https://example.com",
+      ip: "203.0.113.52",
+    }), env({ RESEND_API_KEY: RESEND_KEY })));
+    assert.equal(response.status, 403);
+    assert.equal(response.headers.get("access-control-allow-origin"), null);
+    assert.equal(resendMessages(net.calls.slice(before)).length, 0);
+  }
+
+  {
+    __resetForTests();
+    const before = net.calls.length;
+    const response = await read(await worker.fetch(request("/lead", {
+      body: goodLead({
+        name: 'Ada <script>alert("x")</script>',
+        project: `A shop for Tom & Jerry.\n<img src=x onerror=alert(1)> ${SECRET}`,
+        service: "Other",
+        source: "Start a project",
+        phone: "+1 (202) 555-0134",
+      }),
+      origin: "http://localhost:8000",
+      ip: "203.0.113.53",
+    }), env({
+      RESEND_API_KEY: RESEND_KEY,
+      LEAD_TO: "https://evil.example/hook",
+      LEAD_FROM: "Evil <not-an-email>",
+    })));
+    assert.equal(response.status, 200, response.text);
+    assert.equal(response.json.ok, true);
+    assert.equal(response.headers.get("access-control-allow-origin"), "http://localhost:8000");
+    const sent = resendMessages(net.calls.slice(before));
+    assert.equal(sent.length, 2);
+    assert.equal(sent[0].url, "https://api.resend.com/emails");
+    assert.equal(sent[1].url, "https://api.resend.com/emails");
+    for (const message of sent) {
+      assert.equal(message.auth, `Bearer ${RESEND_KEY}`);
+      assert.equal(message.body.from, "TechPhase <info@techphase.net>");
+      assert.equal(Object.hasOwn(message.body, "replyTo"), false);
+      assert.equal(JSON.stringify(message.body).includes(SECRET), false);
+      assert.equal(JSON.stringify(message.body).includes(RESEND_KEY), false);
+      assert.equal(JSON.stringify(message.body).includes("evil.example"), false);
+      assert.equal(message.body.html.includes("<script"), false);
+      assert.equal(message.body.html.includes("<img src=x"), false);
+      assert.match(message.body.html, new RegExp(LOGO_URL.replace(/[.]/g, "\\.")));
+      assert.equal(/formsubmit|resend/i.test(message.body.html + message.body.text), false);
+    }
+    assert.deepEqual(sent[0].body.to, ["info@techphase.net"]);
+    assert.equal(sent[0].body.reply_to, "ada@example.com");
+    assert.equal(sent[0].body.subject, "New project request — Other");
+    assert.match(sent[0].body.html, /&lt;script&gt;/);
+    assert.match(sent[0].body.html, /Tom &amp; Jerry/);
+    assert.match(sent[0].body.html, /\[redacted\]/);
+    assert.match(sent[0].body.html, /Start a project/);
+    assert.match(sent[0].body.text, /\+1 \(202\) 555-0134/);
+    const expected = buildNotificationEmail({
+      name: 'Ada <script>alert("x")</script>',
+      email: "ada@example.com",
+      phone: "+1 (202) 555-0134",
+      service: "Other",
+      project: "A shop for Tom & Jerry.\n<img src=x onerror=alert(1)> [redacted]",
+      source: "Start a project",
+    });
+    assert.equal(sent[0].body.html, expected.html);
+    assert.equal(sent[0].body.text, expected.text);
+    assert.deepEqual(sent[1].body.to, ["ada@example.com"]);
+    assert.equal(sent[1].body.reply_to, "info@techphase.net");
+    assert.equal(sent[1].body.subject, AUTO_REPLY_SUBJECT);
+    assert.match(sent[1].body.html, /within one business day/);
+    assert.match(sent[1].body.html, /techphase\.net/);
+    assert.match(sent[1].body.text, /info@techphase\.net/);
+  }
+
+  {
+    __resetForTests();
+    const before = net.calls.length;
+    const response = await read(await worker.fetch(request("/lead", {
+      body: goodLead({ email: "sam@example.com", source: "Start a project" }),
+      ip: "203.0.113.54",
+    }), env({ RESEND_API_KEY: RESEND_KEY, LEAD_TO: "leads@techphase.net" })));
+    assert.equal(response.status, 200);
+    const sent = resendMessages(net.calls.slice(before));
+    assert.deepEqual(sent[0].body.to, ["leads@techphase.net"]);
+    assert.equal(sent[1].body.reply_to, "leads@techphase.net");
+    assert.deepEqual(sent[1].body.to, ["sam@example.com"]);
+  }
+
+  {
+    __resetForTests();
+    const response = await read(await worker.fetch(request("/lead", {
+      body: goodLead(),
+      ip: "203.0.113.55",
+    }), env({ RESEND_API_KEY: "  " })));
+    assert.equal(response.status, 503);
+    assert.equal(response.json.error, "unavailable");
+  }
+
+  const UPSTREAM = "upstream-body-should-not-leak";
+  net.restore();
+  net = installFetch(async (url) => {
+    if (url !== "https://api.resend.com/emails") throw new Error(`unexpected url ${url}`);
+    return new Response(JSON.stringify({ message: `bad gateway ${RESEND_KEY} ${UPSTREAM}` }), {
+      status: 422,
+      headers: { "content-type": "application/json" },
+    });
+  });
+
+  {
+    __resetForTests();
+    const logs = [];
+    const original = console.error;
+    console.error = (...args) => logs.push(args.join(" "));
+    const before = net.calls.length;
+    const response = await read(await worker.fetch(request("/lead", {
+      body: goodLead(),
+      ip: "203.0.113.56",
+    }), env({ RESEND_API_KEY: RESEND_KEY })));
+    console.error = original;
+    assert.equal(response.status, 502);
+    assert.equal(response.json.error, "unavailable");
+    assert.equal(response.text.includes(UPSTREAM), false);
+    assert.equal(response.text.includes(RESEND_KEY), false);
+    assert.equal(logs.join("\n").includes(UPSTREAM), false);
+    assert.equal(logs.join("\n").includes(RESEND_KEY), false);
+    assert.match(logs.join("\n"), /422/);
+    assert.equal(net.calls.length - before, 1);
+  }
+
+  net.restore();
+  let resendAttempt = 0;
+  net = installFetch(async (url) => {
+    if (url !== "https://api.resend.com/emails") throw new Error(`unexpected url ${url}`);
+    resendAttempt += 1;
+    if (resendAttempt === 1) return new Response("{}", { status: 200 });
+    return new Response(JSON.stringify({ message: UPSTREAM }), { status: 500 });
+  });
+
+  {
+    __resetForTests();
+    const logs = [];
+    const original = console.error;
+    console.error = (...args) => logs.push(args.join(" "));
+    const before = net.calls.length;
+    const response = await read(await worker.fetch(request("/lead", {
+      body: goodLead({ email: "reply-fails@example.com" }),
+      ip: "203.0.113.57",
+    }), env({ RESEND_API_KEY: RESEND_KEY })));
+    console.error = original;
+    assert.equal(response.status, 200);
+    assert.equal(response.json.ok, true);
+    assert.equal(response.text.includes(UPSTREAM), false);
+    assert.equal(logs.join("\n").includes(UPSTREAM), false);
+    assert.match(logs.join("\n"), /500/);
+    assert.equal(net.calls.length - before, 2);
+  }
+
+  net.restore();
+  net = installFetch(async (url) => {
+    if (url === "https://api.resend.com/emails") return new Response("{}", { status: 200 });
+    throw new Error(`unexpected url ${url}`);
+  });
+
+  {
+    __resetForTests();
+    const ip = "203.0.113.58";
+    for (let i = 0; i < 12; i += 1) {
+      const response = await read(await worker.fetch(request("/lead", {
+        body: goodLead({ email: `person${i}@example.com` }),
+        ip,
+      }), env({ RESEND_API_KEY: RESEND_KEY })));
+      assert.equal(response.status, 200, `lead ${i}`);
+    }
+    const blocked = await read(await worker.fetch(request("/lead", {
+      body: goodLead({ email: "blocked@example.com" }),
+      ip,
+    }), env({ RESEND_API_KEY: RESEND_KEY })));
+    assert.equal(blocked.status, 429);
+    assert.equal(blocked.json.error, "rate_limited");
+    assert.equal(blocked.headers.get("retry-after"), "60");
   }
 
   console.log("chat worker tests passed");
