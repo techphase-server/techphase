@@ -276,3 +276,5 @@ body.legal .legal-doc .contact{margin-top:2rem;padding-top:1.25rem;border-top:1p
 .ck-btn{min-height:44px;border-radius:9999px;border:1px solid var(--ink);background:#fff;color:var(--ink);font:inherit;font-size:.875rem;font-weight:500;letter-spacing:0;text-transform:none;padding:.65rem 1rem;cursor:pointer}
 .ck-btn:hover{background:var(--ink);color:#fff}
 @media(max-width:640px){.ck-card{margin-right:0;margin-bottom:4.75rem}}
+/* footer: room for the Services column */
+@media(min-width:1024px){.fg{grid-template-columns:1.4fr repeat(4,1fr)}}
