@@ -214,3 +214,6 @@ footer a{transition:color .3s,opacity .3s,transform .3s}footer a:hover,.fg li a:
 #gl .gt button{flex:1 0 3.5rem;min-width:0;border:2px solid transparent;border-radius:.75rem;overflow:hidden;opacity:.55;transition:.3s;aspect-ratio:16/9}
 #gl .gt button.on{border-color:var(--ac);opacity:1}#gl .gt img{width:100%;height:100%;object-fit:cover}
 #gl .gc{margin-top:.75rem;font-size:.75rem;color:var(--mu);text-align:center}
+
+/* Legal overlay titles changed from <h1> to <h2 class="pgt"> so the homepage has exactly one H1. Keeps the old look. */
+.pg .pgt{max-width:none;font-size:2.5rem;font-weight:600;line-height:1;letter-spacing:-.02em;margin-bottom:.5rem}

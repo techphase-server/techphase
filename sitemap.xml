@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Phase 1: the site is currently a single page. Hash sections (#terms, #privacy…) are NOT separate URLs and must not be listed. -->
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url>
+    <loc>https://techphase.net/</loc>
+    <lastmod>2026-10-23</lastmod>
+  </url>
+</urlset>
