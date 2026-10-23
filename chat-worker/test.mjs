@@ -207,6 +207,8 @@ try {
     assert.match(payload.messages[0].content, /Never invent a price/);
     assert.match(payload.messages[0].content, /Tahir Ayub/);
     assert.match(payload.messages[0].content, /info@techphase\.net/);
+    assert.match(payload.messages[0].content, /\+1 \(260\) 239-4557/);
+    assert.match(payload.messages[0].content, /\+92 333 2832914/);
   }
 
   {
