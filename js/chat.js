@@ -6,6 +6,13 @@
   const CHAT_WORKER_URL = window.CHAT_WORKER_URL || "";
   const EMAIL = "info@techphase.net";
   const SUGGESTIONS = ["What services do you offer?", "How do we start?", "I'd like a quote"];
+  const CHAT_CSS_HREF = new URL("../css/chat.css", (document.currentScript && document.currentScript.src) || location.href).href;
+
+  function privacyPolicyHref() {
+    const path = location.pathname.replace(/index\.html$/, "");
+    if (/\/(privacy-policy|terms|refund-policy|cookie-notice)\/?$/.test(path)) return "../privacy-policy/";
+    return "privacy-policy/";
+  }
 
   function endpoint() {
     const raw = String(CHAT_WORKER_URL || "").trim();
@@ -51,7 +58,7 @@
     return new Promise((resolve) => {
       const link = document.createElement("link");
       link.rel = "stylesheet";
-      link.href = "css/chat.css";
+      link.href = CHAT_CSS_HREF;
       link.onload = () => resolve();
       link.onerror = () => resolve();
       document.head.appendChild(link);
@@ -89,11 +96,16 @@
     panel.setAttribute("aria-labelledby", "tp-chat-title");
 
     const head = el("div", "tp-chat-head");
-    const titles = el("div");
+    const titles = el("div", "tp-chat-titles");
     titles.append(el("p", "tp-chat-kicker", "Tech Phase"));
     const title = el("h2", "", "Ask about a project");
     title.id = "tp-chat-title";
-    titles.append(title);
+    const aiNote = el("p", "tp-chat-ai");
+    const privacyLink = document.createElement("a");
+    privacyLink.href = privacyPolicyHref();
+    privacyLink.textContent = "Privacy Policy";
+    aiNote.append("AI assistant. Please don't share sensitive information. ", privacyLink);
+    titles.append(title, aiNote);
     const closeBtn = el("button", "tp-chat-close");
     closeBtn.type = "button";
     closeBtn.setAttribute("aria-label", "Close chat");

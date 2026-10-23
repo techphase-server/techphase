@@ -76,11 +76,26 @@
   border-radius: 999px;
   background: var(--ac2, #cf8047);
 }
+.tp-chat-titles { min-width: 0; }
 .tp-chat-head h2 {
   margin: .2rem 0 0;
   font-size: 1.15rem;
   font-weight: 600;
   letter-spacing: -.02em;
+}
+.tp-chat-ai {
+  margin: .4rem 0 0;
+  font-size: .72rem;
+  font-weight: 400;
+  line-height: 1.4;
+  letter-spacing: 0;
+  text-transform: none;
+  color: rgba(255, 255, 255, .72);
+}
+.tp-chat-ai a {
+  color: #fff;
+  text-decoration: underline;
+  text-underline-offset: .12em;
 }
 .tp-chat-close {
   width: 2.25rem;
