@@ -1,9 +1,9 @@
 /* Tech Phase chat widget.
- * CHAT_WORKER_URL is the only place the Worker address is set.
- * Deployed Worker (no trailing slash). This file never contains an API key.
+ * The worker origin is window.CHAT_WORKER_URL, set once in js/main.js.
+ * This file never contains an API key.
  */
 (function () {
-  const CHAT_WORKER_URL = "https://techphase-chat.techphase-net.workers.dev";
+  const CHAT_WORKER_URL = window.CHAT_WORKER_URL || "";
   const EMAIL = "info@techphase.net";
   const SUGGESTIONS = ["What services do you offer?", "How do we start?", "I'd like a quote"];
 
