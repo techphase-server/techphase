@@ -208,7 +208,6 @@ try {
     assert.match(payload.messages[0].content, /Tahir Ayub/);
     assert.match(payload.messages[0].content, /info@techphase\.net/);
     assert.match(payload.messages[0].content, /\+1 \(260\) 239-4557/);
-    assert.match(payload.messages[0].content, /\+92 333 2832914/);
   }
 
   {
@@ -370,7 +369,7 @@ try {
     return {
       name: "Ada Lovelace",
       email: "ada@example.com",
-      phone: "+92 333 2832914",
+      phone: "+1 (260) 239-4557",
       service: "Web Development",
       project: "A bookshop website for the spring.",
       source: "Contact form",
@@ -462,9 +461,9 @@ try {
     [goodLead({ name: "Ada\nLovelace" }), "name newline"],
     [goodLead({ email: "not-an-email" }), "email"],
     [goodLead({ email: "a@b" }), "short email"],
-    [goodLead({ phone: "333 2832914" }), "phone missing country code"],
-    [goodLead({ phone: "+92" }), "phone too short"],
-    [goodLead({ phone: "+92 123" }), "phone too few digits"],
+    [goodLead({ phone: "260 239 4557" }), "phone missing country code"],
+    [goodLead({ phone: "+1" }), "phone too short"],
+    [goodLead({ phone: "+1 12345" }), "phone too few digits"],
     [goodLead({ service: "Hacking" }), "service"],
     [goodLead({ project: "" }), "blank project"],
     [goodLead({ project: "x".repeat(4001) }), "long project"],
