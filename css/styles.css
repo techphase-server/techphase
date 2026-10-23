@@ -14,16 +14,20 @@ a{color:inherit;text-decoration:none}button{font:inherit;color:inherit;backgroun
 #ld .t{width:min(22rem,72vw)}#ld .tr{height:1px;background:rgba(255,255,255,.15)}#ld .f{height:100%;background:var(--ac2);width:0}
 #ld .r{display:flex;justify-content:space-between;margin-top:.75rem;font-size:.75rem;text-transform:uppercase;letter-spacing:.05em;color:rgba(255,255,255,.5)}
 header{position:absolute;inset-inline:0;top:0;z-index:50}
-header .shell{display:flex;align-items:center;justify-content:space-between;gap:1rem;padding-block:1.25rem}
-.hd{display:flex;align-items:center;gap:.6rem;margin-left:auto}
-.hcall{display:inline-flex;align-items:center;justify-content:center;gap:.4rem;flex:none;border:1px solid rgba(230,229,226,.8);background:rgba(255,255,255,.4);backdrop-filter:blur(4px);border-radius:.875rem;padding:.5rem .65rem;color:inherit}
-.hcall svg{width:1rem;height:1rem;display:block}.hcall .hl,.hcall .hn{display:none}
-@media(min-width:1180px){.hcall{padding:.5rem .85rem}.hcall .hl{display:inline;font-size:.75rem;font-weight:500;text-transform:uppercase;letter-spacing:.05em}}
-@media(min-width:1400px){.hcall .hn{display:inline;font-size:.8rem;font-weight:500}.hcall .hl{color:rgba(17,17,17,.5)}}
+header .shell{display:flex;align-items:center;justify-content:space-between;gap:1.5rem;padding-block:1.25rem}
+.hd{display:flex;align-items:center;gap:.75rem;flex:none}
 .brand{display:flex;align-items:center;gap:.5rem;font-weight:600;font-size:1.125rem}.brand img{width:2rem}
-nav ul{display:none;gap:2rem;font-size:.875rem;font-weight:500}@media(min-width:1024px){nav ul{display:flex}.hd{gap:1.5rem}}
+nav ul{display:none;gap:2rem;font-size:.875rem;font-weight:500}@media(min-width:1024px){nav ul{display:flex}}
 nav a{opacity:.8;transition:.3s}nav a:hover{opacity:1}
-.chip{border:1px solid rgba(230,229,226,.8);background:rgba(255,255,255,.4);backdrop-filter:blur(4px);border-radius:.875rem;padding:.5rem 1rem;font-size:.75rem;font-weight:500;text-transform:uppercase;letter-spacing:.05em}
+.chip,.hcall{display:inline-flex;align-items:center;justify-content:center;gap:.4rem;flex:none;border:1px solid rgba(230,229,226,.8);background:rgba(255,255,255,.4);backdrop-filter:blur(4px);border-radius:.875rem;padding:.5rem 1rem;font-size:.75rem;font-weight:500;line-height:1;text-transform:uppercase;letter-spacing:.05em;color:inherit;white-space:nowrap}
+.hcall svg{width:1em;height:1em;display:block;flex:none}
+@media(max-width:1023px){
+.hd{gap:8px}
+header .chip,header .hcall{min-height:44px}
+header .hcall{position:relative;width:44px;min-width:44px;padding:0}
+header .hcall span{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+header .hcall svg{width:18px;height:18px}
+}
 #mn{display:none;position:fixed;inset:0;z-index:115;background:var(--ink);color:#fff;flex-direction:column;justify-content:center;padding:2rem}
 #mn.open{display:flex}#mn a{display:block;font-size:2.25rem;font-weight:600;padding:.4rem 0;color:rgba(255,255,255,.75)}#mn a:hover{color:#fff}
 #mn a.mn-call{margin-top:1.25rem;font-size:1.05rem;font-weight:500;color:#fff}
