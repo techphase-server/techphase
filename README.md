@@ -9,7 +9,10 @@ Static site: plain HTML, CSS and JavaScript. No build step, no dependencies.
 ```
 index.html          page markup
 css/styles.css      all styles
+css/chat.css        chat widget styles (loaded when the widget starts)
 js/main.js          all behaviour (services, portfolio gallery, forms, routing)
+js/chat.js          chat widget (set CHAT_WORKER_URL after the worker is deployed)
+chat-worker/        Cloudflare Worker proxy for the Grok API
 assets/img/         logos and portfolio gallery images (gallery/<project>/)
 assets/video/       portfolio videos
 robots.txt          crawler rules
@@ -32,6 +35,10 @@ Then visit http://localhost:8000
 Site URL: https://techphase-server.github.io/techphase/
 
 **Netlify / Vercel / Cloudflare Pages:** import this repo, leave the build command empty, publish directory `/`.
+
+## Chat assistant
+
+The floating chat panel is `js/chat.js`. It calls a Cloudflare Worker in `chat-worker/`, which holds the xAI API key. Deploy steps, where to paste the Worker URL, and how to test are in [chat-worker/README.md](chat-worker/README.md).
 
 ## Contact
 

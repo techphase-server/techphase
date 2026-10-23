@@ -1,0 +1,8 @@
+{
+  "name": "techphase-chat-worker",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "test": "node test.mjs"
+  }
+}

@@ -1,0 +1,24 @@
+name = "techphase-chat"
+main = "src/index.js"
+compatibility_date = "2026-10-23"
+
+# Public settings only. Do not put the API key in this file.
+# Set the key out of band: wrangler secret put XAI_API_KEY
+[vars]
+# Chat model as of October 2026: https://docs.x.ai/developers/models
+# grok-4.7 is xAI's current model for chat. Other text models on that page
+# include grok-4.6, grok-4.5, grok-4.3, and grok-4.20-0309-non-reasoning.
+MODEL = "grok-4.7"
+# grok-4.7 always reasons; "low" is the fastest setting it accepts.
+# Use an empty string to omit reasoning_effort (needed if you switch to a
+# model that rejects the field).
+REASONING_EFFORT = "low"
+# Cap on visible reply tokens. The worker also hard-caps this at 800.
+MAX_COMPLETION_TOKENS = "400"
+# TODO: chat leads are not emailed while this is empty.
+# The site sends contact forms through FormSubmit.co at
+# https://formsubmit.co/ajax/info@techphase.net
+# Set LEAD_EMAIL to info@techphase.net (or that full URL) after the inbox
+# has opened FormSubmit's one-time activation email. Until then the chat
+# still answers, and the assistant asks visitors to email the team directly.
+LEAD_EMAIL = ""
