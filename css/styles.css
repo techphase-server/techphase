@@ -266,3 +266,13 @@ body.legal .legal-doc tr:last-child td,body.legal .legal-doc tr:last-child th{bo
 body.legal .legal-doc thead th{font-size:.7rem;font-weight:500;text-transform:uppercase;letter-spacing:.04em;color:rgba(17,17,17,.5);background:var(--sf)}
 body.legal .legal-doc th[scope="row"]{width:38%;font-size:.875rem;font-weight:600;text-transform:none;letter-spacing:0;color:var(--fg);background:transparent}
 body.legal .legal-doc .contact{margin-top:2rem;padding-top:1.25rem;border-top:1px solid var(--line)}
+.ck[hidden]{display:none}
+.ck{position:fixed;z-index:100;left:max(1rem,env(safe-area-inset-left));right:max(1rem,env(safe-area-inset-right));bottom:max(1rem,env(safe-area-inset-bottom));display:flex;justify-content:flex-start;pointer-events:none}
+.ck-card{pointer-events:auto;width:min(36rem,100%);margin-right:4.5rem;background:#fff;color:var(--fg);border:1px solid var(--line);border-radius:1.5rem;box-shadow:0 18px 50px rgba(10,10,10,.16);padding:1.25rem 1.25rem 1.1rem}
+.ck-card p{font-size:.875rem;line-height:1.5;color:rgba(17,17,17,.78);margin:.45rem 0 .9rem}
+.ck-kicker{font-size:.75rem;font-weight:500;letter-spacing:.05em;text-transform:uppercase;color:rgba(17,17,17,.5);margin-bottom:0}
+.ck-card a{color:var(--ac);text-decoration:underline;text-underline-offset:.12em}
+.ck-actions{display:grid;grid-template-columns:1fr 1fr;gap:.75rem}
+.ck-btn{min-height:44px;border-radius:9999px;border:1px solid var(--ink);background:#fff;color:var(--ink);font:inherit;font-size:.875rem;font-weight:500;letter-spacing:0;text-transform:none;padding:.65rem 1rem;cursor:pointer}
+.ck-btn:hover{background:var(--ink);color:#fff}
+@media(max-width:640px){.ck-card{margin-right:0;margin-bottom:4.75rem}}

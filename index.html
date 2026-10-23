@@ -1,11 +1,28 @@
 <!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-7TH4N1HYDP"></script>
+<!-- Google tag (gtag.js). Consent Mode v2 defaults are set before gtag.js loads. -->
 <script>
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
+  gtag('consent', 'default', {
+    ad_storage: 'denied',
+    ad_user_data: 'denied',
+    ad_personalization: 'denied',
+    analytics_storage: 'denied',
+    functionality_storage: 'denied',
+    personalization_storage: 'denied',
+    security_storage: 'denied',
+    wait_for_update: 500
+  });
+  gtag('set', 'ads_data_redaction', true);
+  try {
+    if (localStorage.getItem('tp-cookie-consent') === 'accepted') {
+      gtag('consent', 'update', { analytics_storage: 'granted' });
+    }
+  } catch (e) {}
+</script>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-7TH4N1HYDP"></script>
+<script>
   gtag('js', new Date());
-
   gtag('config', 'G-7TH4N1HYDP');
 </script>
 <!-- ===== Tech Phase SEO head block (replace the existing <title> … og:type / description lines) ===== -->
@@ -158,7 +175,7 @@
 <footer><div class="shell"><div class="fc"><h2 style="max-width:16ch;font-size:3rem">Have a project in mind? Let's get to work.</h2><button class="pill lt" data-m>Start a project <i>↗</i></button></div>
 <div class="fg"><div><div class="brand"><img class="inv" src="assets/img/logo-header.png" alt="">Tech Phase</div><p style="margin-top:1rem;max-width:20rem;font-size:.875rem;color:rgba(255,255,255,.55)">Tech agency & business consultant — brands, products and the systems that connect them.</p></div>
 <div><h4>Company</h4><ul><li><a href="#about">About</a></li><li><a href="#works">Work</a></li><li><a href="#contact">Contact</a></li></ul></div>
-<div><h4>Legal</h4><ul><li><a href="terms/">Terms of Service</a></li><li><a href="privacy-policy/">Privacy Policy</a></li><li><a href="refund-policy/">Refund Policy</a></li><li><a href="cookie-notice/">Cookie Notice</a></li></ul></div>
+<div><h4>Legal</h4><ul><li><a href="terms/">Terms of Service</a></li><li><a href="privacy-policy/">Privacy Policy</a></li><li><a href="refund-policy/">Refund Policy</a></li><li><a href="cookie-notice/">Cookie Notice</a></li><li><a href="#cookie-settings" id="cookie-settings">Cookie settings</a></li></ul></div>
 <div><h4>Get in touch</h4><ul><li><a href="mailto:info@techphase.net">info@techphase.net</a></li><li><a href="tel:+12602394557" aria-label="Call us +1 (260) 239-4557">+1 (260) 239-4557</a></li></ul><div class="so" id="so2"></div></div></div>
 <div class="lg"><span>© 2026 Tech Phase. All rights reserved.</span><span><a href="privacy-policy/">Privacy</a> · <a href="terms/">Terms</a> · <a href="refund-policy/">Refunds</a> · <a href="cookie-notice/">Cookies</a></span></div></div></footer>
 </div>
@@ -182,4 +199,5 @@
 
 <div id="gl" role="dialog" aria-modal="true" aria-label="Project samples"><div class="gp"><div class="gh"><div><h3 id="glt"></h3><p id="gld"></p></div><button class="gx" id="glx" aria-label="Close">Close ✕</button></div><div class="gs"><img id="gli" alt=""><video id="glv" controls playsinline preload="auto"></video><button class="ga gv" id="glp" aria-label="Previous image">←</button><button class="ga gn" id="gln" aria-label="Next image">→</button></div><div class="gt" id="glh"></div><div class="gc" id="glc"></div></div></div>
 <script src="js/main.js"></script>
+<script src="js/consent.js"></script>
 <script src="js/chat.js" defer></script></body></html>
