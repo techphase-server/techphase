@@ -4,6 +4,12 @@
   var banner = null;
   var opener = null;
 
+  function pagePrefix() {
+    var path = location.pathname.replace(/index\.html$/, "");
+    if (/\/(privacy-policy|terms|refund-policy|cookie-notice|white-label|ai-automation|web-design)\/?$/.test(path)) return "../";
+    return "";
+  }
+
   function readChoice() {
     try {
       var value = localStorage.getItem(KEY);
@@ -99,10 +105,11 @@
     desc.id = "ck-desc";
     desc.append("We use Google Analytics to understand how this site is used. Analytics cookies are set only if you accept. We do not use advertising cookies. Read the ");
     var notice = document.createElement("a");
-    notice.href = "cookie-notice/";
+    var prefix = pagePrefix();
+    notice.href = prefix + "cookie-notice/";
     notice.textContent = "Cookie Notice";
     var policy = document.createElement("a");
-    policy.href = "privacy-policy/";
+    policy.href = prefix + "privacy-policy/";
     policy.textContent = "Privacy Policy";
     desc.append(notice, " and ", policy, ".");
 
