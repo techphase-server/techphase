@@ -16,8 +16,8 @@
   var LEAD_URL = CHAT_WORKER_URL.replace(/\/$/, "") + "/lead";
 
   // Must match SERVICES in js/main.js and chat-worker/src/index.js (the worker rejects anything else).
-  var S = ["Web Development", "E-commerce", "Mobile App Development", "UI/UX Design", "Digital Marketing & SEO",
-    "Branding & Graphic Design", "Video Editing & UGC Ads", "2D/3D Animation", "AI Automation", "Business Consulting"];
+  var S = ["Business Consulting", "Web Development", "E-commerce", "Mobile App Development", "UI/UX Design", "Digital Marketing & SEO",
+    "Branding & Graphic Design", "Video Editing & UGC Ads", "2D/3D Animation", "AI Automation"];
   // form_id values used by service pages (homepage uses cf and mq).
   var FORM_IDS = ["wl", "ai", "wd"];
 
