@@ -1,12 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- Lists only real pages that return 200. Hash sections (#terms, #privacy…) are not separate URLs. Update lastmod on each real change. -->
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url><loc>https://techphase.net/</loc><lastmod>2026-10-23</lastmod></url>
-  <url><loc>https://techphase.net/white-label/</loc><lastmod>2026-10-23</lastmod></url>
-  <url><loc>https://techphase.net/ai-automation/</loc><lastmod>2026-10-23</lastmod></url>
-  <url><loc>https://techphase.net/web-design/</loc><lastmod>2026-10-23</lastmod></url>
-  <url><loc>https://techphase.net/privacy-policy/</loc><lastmod>2026-10-23</lastmod></url>
-  <url><loc>https://techphase.net/terms/</loc><lastmod>2026-10-23</lastmod></url>
-  <url><loc>https://techphase.net/refund-policy/</loc><lastmod>2026-10-23</lastmod></url>
-  <url><loc>https://techphase.net/cookie-notice/</loc><lastmod>2026-10-23</lastmod></url>
+  <url><loc>https://techphase.net/</loc><lastmod>2026-10-24</lastmod></url>
+  <url><loc>https://techphase.net/ai-automation/</loc><lastmod>2026-10-24</lastmod></url>
+  <url><loc>https://techphase.net/web-design/</loc><lastmod>2026-10-24</lastmod></url>
+  <url><loc>https://techphase.net/privacy-policy/</loc><lastmod>2026-10-24</lastmod></url>
+  <url><loc>https://techphase.net/terms/</loc><lastmod>2026-10-24</lastmod></url>
+  <url><loc>https://techphase.net/refund-policy/</loc><lastmod>2026-10-24</lastmod></url>
+  <url><loc>https://techphase.net/cookie-notice/</loc><lastmod>2026-10-24</lastmod></url>
 </urlset>

@@ -1,23 +1,21 @@
 # Tech Phase
 
-> Tech Phase (techphase.net) is a Pakistan-based sole proprietorship founded and led by Tahir Ayub. It works as a white-label delivery partner for US digital agencies, and also works directly with US founders and small businesses. Services: web design and development (WordPress, Shopify, Webflow, custom), app and MVP development, UI/UX design, SEO, UGC ads and video editing, 2D/3D animation, AI automation (n8n, Zapier, AI chatbots) and technology consulting.
+> Tech Phase (techphase.net) is a Pakistan-based sole proprietorship founded and led by Tahir Ayub. It works directly with US founders, small businesses and agencies. Services: web design and development (WordPress, Shopify, Webflow, custom), app and MVP development, UI/UX design, SEO, UGC ads and video editing, 2D/3D animation, AI automation (n8n, Zapier, AI chatbots) and technology consulting.
 
 Key facts:
 - Location: Pakistan (remote delivery; no US office).
-- Clients: primarily US agencies (white-label) and US small businesses/startups.
+- Clients: US founders, small businesses and agencies.
 - Working hours: live overlap with US Eastern mornings on weekdays; asynchronous work outside that window.
-- Pricing: a written scope and a quote in USD per project; no public price list. Monthly arrangements available for agencies with steady overflow.
-- White-label: no Tech Phase branding on deliverables; does not contact an agency's clients unless asked.
+- Pricing: a written scope and a quote in USD per project; no public price list.
 - Ownership: clients own code, designs and accounts once paid.
 - Contact: info@techphase.net · +1 (260) 239-4557 · https://techphase.net/#contact
 
 ## Services
-- [White-label delivery for US agencies](https://techphase.net/white-label/): web design and development, WordPress, Shopify, apps, SEO deliverables, AI automation and video editing under the agency's brand
 - [AI automation](https://techphase.net/ai-automation/): n8n, Zapier and AI chatbots for lead follow-up, booking, inbox triage, reporting and Zapier to n8n migrations
 - [Web design](https://techphase.net/web-design/): custom, mobile-first, SEO-ready websites and redesigns for US small businesses on WordPress, Shopify, Webflow or custom code
 
 ## Pages
-- [Home](https://techphase.net/): overview of services and how Tech Phase works with US agencies and founders
+- [Home](https://techphase.net/): overview of services and how Tech Phase works with founders and small businesses
 - [Privacy Policy](https://techphase.net/privacy-policy/)
 - [Terms of Service](https://techphase.net/terms/)
 - [Refund Policy](https://techphase.net/refund-policy/)

@@ -1,4 +1,4 @@
-/* Tech Phase service pages (/white-label/, /ai-automation/, /web-design/).
+/* Tech Phase service pages (/ai-automation/, /web-design/).
  * The homepage js/main.js is homepage-only (it expects #sv, #hc, #cv and so on),
  * so service pages load this small file instead. The lead flow below mirrors
  * postLead()/bindLead() in js/main.js: same worker /lead route, same JSON body,
