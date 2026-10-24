@@ -10,7 +10,7 @@
 
   function privacyPolicyHref() {
     const path = location.pathname.replace(/index\.html$/, "");
-    if (/\/(privacy-policy|terms|refund-policy|cookie-notice|white-label|ai-automation|web-design)\/?$/.test(path)) return "../privacy-policy/";
+    if (/\/(privacy-policy|terms|refund-policy|cookie-notice|ai-automation|web-design)\/?$/.test(path)) return "../privacy-policy/";
     return "privacy-policy/";
   }
 

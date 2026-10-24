@@ -1,4 +1,4 @@
-/* Tech Phase service pages. Loaded after css/styles.css on /white-label/, /ai-automation/, /web-design/ only. */
+/* Tech Phase service pages. Loaded after css/styles.css on /ai-automation/ and /web-design/ only. */
 body.svc header{position:sticky;top:0;background:rgba(255,255,255,.94);backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
 body.svc nav a[aria-current="page"]{opacity:1;color:var(--ac)}
 body.svc header .nav-sub a[aria-current="page"]{color:#e7b08a;opacity:1}

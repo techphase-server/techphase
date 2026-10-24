@@ -37,9 +37,11 @@ header .hcall svg{width:18px;height:18px}
 #mn .x{position:absolute;top:1.25rem;right:1.25rem;border:1px solid rgba(255,255,255,.2);border-radius:.875rem;padding:.5rem 1rem;font-size:.75rem;text-transform:uppercase}
 @media(min-width:1024px){header nav>ul{align-items:center}}
 header .nav-drop{position:relative}
-header .nav-drop-btn{display:inline-flex;align-items:center;gap:.35rem;padding:0;font-size:inherit;font-weight:inherit;line-height:inherit;opacity:.8;transition:opacity .3s}
+header .nav-drop-btn,#mn .mn-acc-btn{appearance:none;-webkit-appearance:none;background:none;border:0;padding:0;font:inherit;color:inherit;display:inline-flex;align-items:center;gap:.35em;width:auto;white-space:nowrap;cursor:pointer;text-align:left}
+header .nav-drop-btn .chev,#mn .mn-acc-btn .chev{width:.5em;height:.5em;flex:none;display:block}
+header .nav-drop-btn{opacity:.8;transition:opacity .3s}
 header .nav-drop-btn:hover,header .nav-drop:hover>.nav-drop-btn,header .nav-drop:focus-within>.nav-drop-btn,header .nav-drop.is-open>.nav-drop-btn{opacity:1}
-header .nav-drop-btn .chev{width:.7em;height:.7em;display:block;transition:transform .2s}
+header .nav-drop-btn .chev,#mn .mn-acc-btn .chev{transition:transform .2s}
 header .nav-drop:hover>.nav-drop-btn .chev,header .nav-drop:focus-within>.nav-drop-btn .chev,header .nav-drop.is-open>.nav-drop-btn .chev{transform:rotate(180deg)}
 header .nav-drop.is-closed>.nav-drop-btn .chev{transform:none}
 header .nav-sub{display:none;position:absolute;z-index:80;top:100%;left:50%;transform:translateX(-50%);min-width:18rem;padding-top:.55rem}
@@ -50,9 +52,8 @@ header .nav-sub a{display:block;opacity:1;color:rgba(255,255,255,.8);border-radi
 header .nav-sub a:hover,header .nav-sub a:focus-visible{opacity:1;color:#fff;background:rgba(255,255,255,.08)}
 header .nav-sub a[aria-current="page"]{color:#e7b08a;opacity:1}
 #mn .mn-acc{display:flex;flex-direction:column;align-items:flex-start}
-#mn .mn-acc-btn{display:inline-flex;align-items:center;gap:.55rem;padding:.4rem 0;font-size:2.25rem;font-weight:600;line-height:1.1;color:rgba(255,255,255,.75);text-align:left}
+#mn .mn-acc-btn{padding:.4rem 0;font-size:2.25rem;font-weight:600;line-height:normal;color:rgba(255,255,255,.75)}
 #mn .mn-acc-btn:hover,#mn .mn-acc-btn[aria-expanded="true"]{color:#fff}
-#mn .mn-acc-btn .chev{width:.42em;height:.42em;display:block;transition:transform .2s}
 #mn .mn-acc-btn[aria-expanded="true"] .chev{transform:rotate(180deg)}
 #mn .mn-sub{padding:0 0 .35rem}
 #mn .mn-sub a{font-size:1.05rem;font-weight:500;line-height:1.3;padding:.22rem 0 .22rem .15rem;color:rgba(255,255,255,.72)}
