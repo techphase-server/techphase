@@ -5,9 +5,7 @@
   var opener = null;
 
   function pagePrefix() {
-    var path = location.pathname.replace(/index\.html$/, "");
-    if (/\/(privacy-policy|terms|refund-policy|cookie-notice|ai-automation|web-design)\/?$/.test(path)) return "../";
-    return "";
+    return "/";
   }
 
   function readChoice() {

@@ -6,12 +6,10 @@
   const CHAT_WORKER_URL = window.CHAT_WORKER_URL || "";
   const EMAIL = "info@techphase.net";
   const SUGGESTIONS = ["What services do you offer?", "How do we start?", "I'd like a quote"];
-  const CHAT_CSS_HREF = new URL("../css/chat.css", (document.currentScript && document.currentScript.src) || location.href).href;
+  const CHAT_CSS_HREF = "/css/chat.css";
 
   function privacyPolicyHref() {
-    const path = location.pathname.replace(/index\.html$/, "");
-    if (/\/(privacy-policy|terms|refund-policy|cookie-notice|ai-automation|web-design)\/?$/.test(path)) return "../privacy-policy/";
-    return "privacy-policy/";
+    return "/privacy-policy/";
   }
 
   function endpoint() {
