@@ -4,6 +4,7 @@
   var banner = null;
   var opener = null;
 
+  // Root-absolute. 404.html is served at the missing URL, so a relative prefix breaks there.
   function pagePrefix() {
     return "/";
   }
