@@ -11,6 +11,7 @@ body.svc header .nav-sub a[aria-current="page"]{color:#e7b08a;opacity:1}
 .crumbs li+li:before{content:"/";margin-right:.4rem;opacity:.5}
 .crumbs a{text-decoration:underline;text-underline-offset:.12em}
 .svc-facts{display:flex;flex-wrap:wrap;gap:.5rem;margin-top:2rem}
+@media(max-width:640px){.svc-facts{padding-right:3.75rem}.svc-facts span{white-space:nowrap}}
 .svc-facts span{border:1px solid rgba(17,17,17,.15);border-radius:9999px;padding:.4rem .9rem;font-size:.8rem;font-weight:500;background:rgba(255,255,255,.5)}
 .svc-sec{padding-block:4rem}
 @media(min-width:1024px){.svc-sec{padding-block:5.5rem}}
