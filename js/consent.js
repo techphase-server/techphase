@@ -4,10 +4,9 @@
   var banner = null;
   var opener = null;
 
+  // Root-absolute. 404.html is served at the missing URL, so a relative prefix breaks there.
   function pagePrefix() {
-    var path = location.pathname.replace(/index\.html$/, "");
-    if (/\/(privacy-policy|terms|refund-policy|cookie-notice|ai-automation|web-design)\/?$/.test(path)) return "../";
-    return "";
+    return "/";
   }
 
   function readChoice() {

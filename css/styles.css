@@ -302,3 +302,15 @@ body.legal .legal-doc .contact{margin-top:2rem;padding-top:1.25rem;border-top:1p
 @media(max-width:640px){.ck-card{margin-right:0;margin-bottom:4.75rem}}
 /* footer: room for the Services column */
 @media(min-width:1024px){.fg{grid-template-columns:1.4fr repeat(4,1fr)}}
+body.legal .not-found{padding:3rem 0 5rem}
+body.legal .not-found .shell{max-width:52rem}
+body.legal .not-found h1{max-width:none;margin:0 0 .75rem;font-size:2.5rem;line-height:1;letter-spacing:-.02em}
+@media(min-width:768px){body.legal .not-found h1{font-size:3.25rem}}
+body.legal .not-found .lede{max-width:34rem;margin:0 0 1.75rem;color:rgba(17,17,17,.78);line-height:1.65}
+body.legal .not-found .actions{display:flex;flex-wrap:wrap;align-items:center;gap:.9rem 1.35rem;margin:0 0 2.75rem}
+body.legal .not-found .back{font-size:.875rem;font-weight:500;color:rgba(17,17,17,.7);text-decoration:underline;text-underline-offset:.15em}
+body.legal .not-found .back:hover{color:var(--ac)}
+body.legal .not-found .miss{display:flex;flex-direction:column;align-items:flex-start;gap:.15rem;max-width:28rem;margin:0;padding-top:1.5rem;border-top:1px solid var(--line)}
+body.legal .not-found .miss a{display:inline-flex;align-items:center;gap:.45rem;padding:.4rem 0;font-weight:500}
+body.legal .not-found .miss a:hover{color:var(--ac)}
+body.legal .not-found .miss a::after{content:"→";color:var(--ac)}}
