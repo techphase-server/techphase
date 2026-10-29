@@ -298,6 +298,13 @@ body.legal .legal-doc .contact{margin-top:2rem;padding-top:1.25rem;border-top:1p
 .ck-kicker{font-size:.75rem;font-weight:500;letter-spacing:.05em;text-transform:uppercase;color:rgba(17,17,17,.5);margin-bottom:0}
 .ck-card a{color:var(--ac);text-decoration:underline;text-underline-offset:.12em}
 .ck-actions{display:grid;grid-template-columns:1fr 1fr;gap:.75rem}
+.ck-actions-us{display:flex;flex-direction:column;grid-template-columns:none}
+@media(min-width:641px){
+  .ck-card.ck-card-us{width:min(44rem,100%)}
+  .ck-actions-us{flex-direction:row}
+  .ck-actions-us .ck-btn{flex:1 1 0}
+}
+.ck-panel[hidden]{display:none}
 .ck-btn{min-height:44px;border-radius:9999px;border:1px solid var(--ink);background:#fff;color:var(--ink);font:inherit;font-size:.875rem;font-weight:500;letter-spacing:0;text-transform:none;padding:.65rem 1rem;cursor:pointer}
 .ck-btn:hover{background:var(--ink);color:#fff}
 @media(max-width:640px){.ck-card{margin-right:0;margin-bottom:4.75rem}}
