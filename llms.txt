@@ -1,6 +1,6 @@
 # Tech Phase
 
-> Tech Phase (techphase.net) is a Pakistan-based sole proprietorship founded and led by Tahir Ayub. It works directly with US founders, small businesses and agencies. Services: web design and development (WordPress, Shopify, Webflow, custom), app and MVP development, UI/UX design, SEO, UGC ads and video editing, 2D/3D animation, AI automation (n8n, Zapier, AI chatbots) and technology consulting.
+> Tech Phase (techphase.net) is a Pakistan-based sole proprietorship. It works directly with US founders, small businesses and agencies. Services: web design and development (WordPress, Shopify, Webflow, custom), app and MVP development, UI/UX design, SEO, UGC ads and video editing, 2D/3D animation, AI automation (n8n, Zapier, AI chatbots) and technology consulting.
 
 Key facts:
 - Location: Pakistan (remote delivery; no US office).
