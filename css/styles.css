@@ -1,3 +1,5 @@
+/* Onest is self-hosted so a page does not contact fonts.googleapis.com or fonts.gstatic.com. */
+@font-face{font-family:'Onest';font-style:normal;font-weight:400 700;font-display:swap;src:url('/assets/fonts/onest-latin.woff2') format('woff2');unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
 :root{--ink:#0a0a0a;--line:#e6e5e2;--sf:#f1f0ee;--ac:#b15f2c;--ac2:#cf8047;--bg:#fff;--fg:#111;--mu:rgba(17,17,17,.6)}
 @media(prefers-color-scheme:dark){:root:not([data-theme=light]){--bg:#fff;--fg:#111}}
 *{box-sizing:border-box;margin:0;padding:0}
@@ -298,6 +300,13 @@ body.legal .legal-doc .contact{margin-top:2rem;padding-top:1.25rem;border-top:1p
 .ck-kicker{font-size:.75rem;font-weight:500;letter-spacing:.05em;text-transform:uppercase;color:rgba(17,17,17,.5);margin-bottom:0}
 .ck-card a{color:var(--ac);text-decoration:underline;text-underline-offset:.12em}
 .ck-actions{display:grid;grid-template-columns:1fr 1fr;gap:.75rem}
+.ck-actions-us{display:flex;flex-direction:column;grid-template-columns:none}
+@media(min-width:641px){
+  .ck-card.ck-card-us{width:min(44rem,100%)}
+  .ck-actions-us{flex-direction:row}
+  .ck-actions-us .ck-btn{flex:1 1 0}
+}
+.ck-panel[hidden]{display:none}
 .ck-btn{min-height:44px;border-radius:9999px;border:1px solid var(--ink);background:#fff;color:var(--ink);font:inherit;font-size:.875rem;font-weight:500;letter-spacing:0;text-transform:none;padding:.65rem 1rem;cursor:pointer}
 .ck-btn:hover{background:var(--ink);color:#fff}
 @media(max-width:640px){.ck-card{margin-right:0;margin-bottom:4.75rem}}

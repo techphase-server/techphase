@@ -51,7 +51,15 @@
   }
 
   // GA4
-  function gaEvent(name, params) { try { if (typeof gtag === "function") gtag("event", name, params); } catch (e) {} }
+  function gaEvent(name, params) {
+    try {
+      if (typeof gtag !== "function") return;
+      var c = window.TP_CONSENT;
+      // Basic mode: don't queue hits that would flush once the visitor accepts.
+      if (c && c.euStyle && c.stored !== "accepted") return;
+      gtag("event", name, params);
+    } catch (e) {}
+  }
   var val = function (f, n) { var el = f.elements[n]; return el ? String(el.value).trim() : ""; };
   function leadEvent(f) {
     var form_id = f && FORM_IDS.indexOf(f.id) !== -1 ? f.id : "";
