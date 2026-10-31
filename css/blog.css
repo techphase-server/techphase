@@ -1,0 +1,38 @@
+/* Blog index and posts. Loaded after css/styles.css and css/service-pages.css. */
+body.blog .svc-hero .shell,
+body.blog .post>.shell,
+body.blog .blog-index>.shell{max-width:46rem}
+body.blog .svc-hero{padding:2.5rem 0 2.75rem}
+body.blog .svc-hero h1{max-width:none;margin:.85rem 0 .85rem;font-size:2.15rem;line-height:1.08}
+@media(min-width:768px){body.blog .svc-hero h1{font-size:3rem}}
+body.blog .post-meta{margin:0;font-size:.9rem;color:var(--mu)}
+body.blog .post-meta time{font-weight:500}
+body.blog .blog-index{padding-top:0}
+body.blog .blog-list{display:grid;gap:1rem;margin:0;padding:0;list-style:none}
+body.blog .blog-list a{display:block;background:var(--sf);border-radius:1.25rem;padding:1.35rem 1.35rem 1.25rem;color:inherit;text-decoration:none;transition:transform .3s,box-shadow .3s}
+body.blog .blog-list a:hover{transform:translateY(-3px);box-shadow:0 12px 30px rgba(17,17,17,.06)}
+body.blog .blog-list time{display:block;margin-bottom:.45rem;font-size:.8rem;font-weight:500;color:var(--mu)}
+body.blog .blog-list h2{max-width:none;margin:0 0 .55rem;font-size:1.35rem;line-height:1.2;letter-spacing:-.02em}
+@media(min-width:768px){body.blog .blog-list h2{font-size:1.6rem}}
+body.blog .blog-list p{margin:0;font-size:.95rem;line-height:1.6;color:rgba(17,17,17,.72)}
+body.blog .post{padding:2.15rem 0 4.5rem}
+body.blog .post h2{max-width:none;margin:2.15rem 0 .75rem;padding-top:1.2rem;border-top:1px solid var(--line);font-size:1.4rem;line-height:1.2}
+@media(min-width:768px){body.blog .post h2{font-size:1.6rem}}
+body.blog .post h2:first-child{margin-top:0;padding-top:0;border-top:0}
+body.blog .post h3{margin:1.35rem 0 .4rem;font-size:1.08rem;font-weight:600;letter-spacing:-.01em;line-height:1.3}
+body.blog .post p{margin:0 0 1rem;max-width:42rem;font-size:1rem;line-height:1.65;color:rgba(17,17,17,.78)}
+body.blog .post ul,body.blog .post ol{margin:0 0 1rem 1.25rem;max-width:42rem}
+body.blog .post ul{list-style:disc}
+body.blog .post ol{list-style:decimal}
+body.blog .post li{margin:.4rem 0;line-height:1.65;color:rgba(17,17,17,.78)}
+body.blog .post li>ul,body.blog .post li>ol{margin-top:.35rem;margin-bottom:.35rem}
+body.blog .post strong{color:var(--fg);font-weight:600}
+body.blog .post a{color:var(--ac);text-decoration:underline;text-underline-offset:.12em;overflow-wrap:anywhere}
+body.blog .crumbs{overflow-wrap:anywhere}
+body.blog .crumbs li{max-width:100%}
+@media(max-width:640px){
+body.blog .svc-hero h1{font-size:1.85rem}
+body.blog .post h2{font-size:1.28rem}
+body.blog .blog-list h2{font-size:1.22rem}
+body.blog .blog-list a,body.blog .post p,body.blog .post li{font-size:1rem}
+}
