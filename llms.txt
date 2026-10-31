@@ -20,3 +20,8 @@ Key facts:
 - [Terms of Service](https://techphase.net/terms/)
 - [Refund Policy](https://techphase.net/refund-policy/)
 - [Cookie Notice](https://techphase.net/cookie-notice/)
+
+## Blog
+- [Blog](https://techphase.net/blog/): guides for small businesses on AI automation and custom website design
+- [AI Automation for Small Businesses: What to Automate First](https://techphase.net/blog/ai-automation-for-small-businesses/): which workflows to automate first, n8n versus Zapier, and how to pick an AI automation agency
+- [Custom Website Design for Small Business: A Practical Guide](https://techphase.net/blog/custom-website-design-small-business/): what custom website design includes, how to choose a platform, what affects cost, and how to redesign safely
