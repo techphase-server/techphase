@@ -1,12 +1,7 @@
 <!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<!-- Google tag (gtag.js). js/consent-defaults.js sets the region consent default, then the global default, before config. -->
+<!-- Consent defaults, then the shared loader. EU-style visitors do not request gtag.js until Accept. -->
 <script src="js/consent-defaults.js"></script>
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-7TH4N1HYDP"></script>
-<script>
-  gtag('js', new Date());
-  if (window.TP_CONSENT && window.TP_CONSENT.debug) gtag('config', 'G-7TH4N1HYDP', { debug_mode: true });
-  else gtag('config', 'G-7TH4N1HYDP');
-</script>
+<script src="js/ga-loader.js"></script>
 <title>Tech Phase — Tech Agency &amp; Business Consultant</title>
 <meta name="description" content="Pakistan-based tech agency for US founders and small businesses: websites, apps, AI automation, UGC ads and animation. Fixed USD quotes, US-morning calls.">
 <link rel="canonical" href="https://techphase.net/">
@@ -86,8 +81,6 @@
 }
 </script>
 <meta name="theme-color" content="#0a0a0a">
-<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Onest:wght@400;500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="css/styles.css"></head><body>
 <a class="sr" href="#main">Skip to content</a>
 <div id="ld"><div style="text-align:center"><img src="assets/img/loader-logo.png" alt="Tech Phase" style="margin:auto;width:8rem;filter:invert(1)"></div><div class="t"><div class="tr"><div class="f" id="lf"></div></div><div class="r"><span>Loading</span><span id="lc">000</span></div></div></div>

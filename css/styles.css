@@ -1,3 +1,5 @@
+/* Onest is self-hosted so a page does not contact fonts.googleapis.com or fonts.gstatic.com. */
+@font-face{font-family:'Onest';font-style:normal;font-weight:400 700;font-display:swap;src:url('/assets/fonts/onest-latin.woff2') format('woff2');unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
 :root{--ink:#0a0a0a;--line:#e6e5e2;--sf:#f1f0ee;--ac:#b15f2c;--ac2:#cf8047;--bg:#fff;--fg:#111;--mu:rgba(17,17,17,.6)}
 @media(prefers-color-scheme:dark){:root:not([data-theme=light]){--bg:#fff;--fg:#111}}
 *{box-sizing:border-box;margin:0;padding:0}

@@ -1,4 +1,7 @@
-/* Consent Mode v2 defaults. Loaded synchronously before gtag.js so the defaults are queued before config. */
+/* Consent Mode v2 defaults. Loaded synchronously before js/ga-loader.js so the
+   defaults are queued before config whenever that loader is allowed to fetch gtag.js.
+   The region default is the IP backstop for visitors who are not on the EU-style banner.
+   EU-style visitors use Consent Mode basic: the loader does not request the tag until Accept. */
 window.dataLayer = window.dataLayer || [];
 function gtag(){dataLayer.push(arguments);}
 

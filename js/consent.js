@@ -1,7 +1,9 @@
-/* Cookie banner. Defaults are set in js/consent-defaults.js before gtag.js loads.
+/* Cookie banner. Defaults are set in js/consent-defaults.js.
    window.TP_CONSENT.euStyle chooses the banner: EU/UK (unchanged Accept / Reject)
    or the US / rest-of-world opt-out banner. The time-zone mapping lives next to
-   the gtag region list in consent-defaults.js. */
+   the gtag region list in consent-defaults.js.
+   EU-style is Consent Mode basic: js/ga-loader.js fetches gtag.js only after
+   Accept, or a stored "accepted". The US path still loads the tag up front. */
 (function () {
   var KEY = "tp-cookie-consent";
   var banner = null;
@@ -73,7 +75,15 @@
     var prev = readChoice();
     var wasOn = analyticsAlreadyOn(prev);
     writeChoice(choice);
-    if (typeof gtag === "function") {
+    // EU-style basic mode: grant, then let the loader fetch gtag.js and config.
+    // config sends the one page_view. A later Accept, after the tag is already
+    // on the page, uses the same extra page_view as the US path.
+    var basicFirstLoad = false;
+    if (choice === "accepted" && state().euStyle && typeof window.TP_LOAD_GA === "function" && typeof gtag === "function") {
+      gtag("consent", "update", consentState(choice));
+      basicFirstLoad = window.TP_LOAD_GA() === true;
+      if (!basicFirstLoad && !wasOn) gtag("event", "page_view");
+    } else if (typeof gtag === "function") {
       gtag("consent", "update", consentState(choice));
       if (choice === "accepted" && !wasOn) gtag("event", "page_view");
     }
