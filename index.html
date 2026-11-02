@@ -56,41 +56,247 @@
   "@context": "https://schema.org",
   "@graph": [
     {
-      "@type": ["Organization", "ProfessionalService"],
+      "@type": [
+        "Organization",
+        "ProfessionalService"
+      ],
       "@id": "https://techphase.net/#org",
       "name": "Tech Phase",
       "alternateName": "TechPhase",
       "url": "https://techphase.net/",
-      "sameAs": [
-        "https://www.instagram.com/thetechphase/",
-        "https://www.facebook.com/techphase.net",
-        "https://www.linkedin.com/company/tech-phase",
-        "https://x.com/thetechphase"
-      ],
-      "logo": "https://techphase.net/assets/img/logo-header.png",
+      "slogan": "Tech Phase, built for your business growth.",
+      "description": "Tech Phase is a Pakistan-based, remote-first tech agency and business consultant (sole proprietorship) that designs and builds websites, online stores, apps and AI automations for US founders, small businesses and agencies, and also provides UI/UX design, SEO and digital marketing, branding, UGC ads and video editing, 2D/3D animation and business consulting.",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://techphase.net/assets/img/logo-header.png"
+      },
       "image": "https://techphase.net/assets/img/og-image.png",
-      "description": "Pakistan-based sole proprietorship providing consulting, web design and development, app development, UI/UX, SEO, UGC ads, 2D/3D animation and AI automation for US founders and small businesses.",
       "email": "info@techphase.net",
       "telephone": "+1-260-239-4557",
-      "address": { "@type": "PostalAddress", "addressCountry": "PK" },
-      "areaServed": [ { "@type": "Country", "name": "United States" }, "Worldwide" ],
-      "knowsAbout": ["Technology consulting","Web design","Web development","WordPress","Shopify","Mobile app development","MVP development","UI/UX design","SEO","UGC ads","Video editing","2D animation","3D product animation","AI automation","n8n","Zapier","AI chatbots"],
-      "contactPoint": [{
-        "@type": "ContactPoint",
-        "contactType": "sales",
-        "email": "info@techphase.net",
-        "telephone": "+1-260-239-4557",
-        "availableLanguage": ["English","Urdu"],
-        "areaServed": "US"
-      }]
+      "address": {
+        "@type": "PostalAddress",
+        "addressCountry": "PK"
+      },
+      "areaServed": [
+        {
+          "@type": "Country",
+          "name": "United States"
+        },
+        "Worldwide"
+      ],
+      "sameAs": [
+        "https://www.linkedin.com/company/tech-phase",
+        "https://x.com/thetechphase",
+        "https://www.facebook.com/techphase.net",
+        "https://www.instagram.com/thetechphase/"
+      ],
+      "knowsAbout": [
+        "Technology consulting",
+        "Web design",
+        "Web development",
+        "WordPress",
+        "Shopify",
+        "Webflow",
+        "E-commerce",
+        "Mobile app development",
+        "MVP development",
+        "UI/UX design",
+        "SEO",
+        "Branding",
+        "UGC ads",
+        "Video editing",
+        "2D animation",
+        "3D product animation",
+        "AI automation",
+        "n8n",
+        "Zapier",
+        "AI chatbots"
+      ],
+      "knowsLanguage": [
+        "en",
+        "ur"
+      ],
+      "contactPoint": [
+        {
+          "@type": "ContactPoint",
+          "contactType": "sales",
+          "email": "info@techphase.net",
+          "telephone": "+1-260-239-4557",
+          "availableLanguage": [
+            "English",
+            "Urdu"
+          ],
+          "areaServed": "US"
+        }
+      ],
+      "hasOfferCatalog": {
+        "@type": "OfferCatalog",
+        "name": "Tech Phase services",
+        "itemListElement": [
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Business Consulting",
+              "description": "Clear strategy and direction for ambitious teams."
+            }
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Web Development",
+              "description": "Fast, scalable websites and web apps — WordPress, Shopify or fully custom.",
+              "url": "https://techphase.net/web-design/",
+              "@id": "https://techphase.net/web-design/#service"
+            }
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "E-commerce",
+              "description": "Online stores that sell: product setup, payments, shipping and conversion-focused design."
+            }
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Mobile App Development",
+              "description": "iOS and Android apps built to perform and built to last."
+            }
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "UI/UX Design",
+              "description": "Interfaces that feel effortless, look sharp and are easy to use."
+            }
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Digital Marketing & SEO",
+              "description": "Social media, ads and search growth that brings in real customers."
+            }
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Branding & Graphic Design",
+              "description": "Logos, identities and creative that make your brand stand out."
+            }
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Video Editing & UGC Ads",
+              "description": "Scroll-stopping UGC ads, reels and promo edits for Meta, TikTok and YouTube."
+            }
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "2D/3D Animation",
+              "description": "Explainers, motion graphics and 3D product visuals that bring ideas to life."
+            }
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "AI Automation",
+              "description": "Chatbots, workflows and AI tools that save hours and cut costs.",
+              "url": "https://techphase.net/ai-automation/",
+              "@id": "https://techphase.net/ai-automation/#service"
+            }
+          }
+        ]
+      }
     },
     {
       "@type": "WebSite",
       "@id": "https://techphase.net/#website",
       "url": "https://techphase.net/",
       "name": "Tech Phase",
-      "publisher": { "@id": "https://techphase.net/#org" },
+      "alternateName": "TechPhase",
+      "publisher": {
+        "@id": "https://techphase.net/#org"
+      },
       "inLanguage": "en"
+    },
+    {
+      "@type": "WebPage",
+      "@id": "https://techphase.net/#webpage",
+      "url": "https://techphase.net/",
+      "name": "Tech Phase — Tech Agency & Business Consultant",
+      "isPartOf": {
+        "@id": "https://techphase.net/#website"
+      },
+      "about": {
+        "@id": "https://techphase.net/#org"
+      },
+      "inLanguage": "en"
+    },
+    {
+      "@type": "FAQPage",
+      "@id": "https://techphase.net/#faq",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "What does Tech Phase do?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Tech Phase is a tech agency and business consultant. We design and build websites, online stores and mobile apps, and we also handle UI/UX design, SEO and digital marketing, branding, UGC ads and video editing, 2D/3D animation, AI automation and business consulting."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Who does Tech Phase work with?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "We work directly with US founders, small businesses and agencies. Most of our work is for businesses that want a website, app or automation that brings in calls, bookings and sales."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Where is Tech Phase based, and how do you work with US clients?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Tech Phase is a Pakistan-based sole proprietorship that works with clients remotely. We overlap live with US Eastern mornings on weekdays for calls, work asynchronously outside that window, and reply within one business day."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How does pricing work?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Every project gets a written scope and a quote in US dollars before work starts. Larger projects are split into milestones, so you pay as work is delivered."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Do I own the work you deliver?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes. Once the work is paid for, the code, designs and accounts are yours."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How do I start a project?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Email info@techphase.net, call +1 (260) 239-4557 or use the contact form. We start with a short discovery call about your goals, then send a written scope and quote."
+          }
+        }
+      ]
     }
   ]
 }
@@ -111,7 +317,7 @@
 <section id="home"><canvas id="cv" aria-hidden="true"></canvas><img class="wm" alt="" src="assets/img/watermark.png">
 <div class="shell hg"><div class="hl"><span class="eb rv">Tech Agency & Business Consultant</span>
 <h1 class="rv" style="--d:100ms">Tech Phase, built for your business growth.</h1>
-<p class="rv" style="--d:200ms;max-width:30rem;color:var(--mu)">Websites, apps, design, marketing, video editing & UGC ads — and consulting that turns it into a plan.</p>
+<p class="rv" style="--d:200ms;max-width:34rem;color:var(--mu)">Tech Phase is a Pakistan-based, remote-first tech agency that designs and builds websites, online stores, apps and AI automations for US founders, small businesses and agencies. We also handle UI/UX, SEO, branding, UGC ads, 2D/3D animation and business consulting, with a written scope and a quote in USD for every project.</p>
 <div class="rv" style="--d:300ms;display:flex;flex-wrap:wrap;gap:.75rem"><button class="pill dk" data-m>Let's Talk <i>→</i></button><a class="pill ol" href="#services">Our Services <i>↓</i></a></div></div>
 <div class="hr rv" style="--d:300ms"><div class="hc" id="hc" role="button" tabindex="0"><div class="a"><div class="tl"><img src="assets/img/logo-header.png" alt=""></div><div class="p"><div><small id="hcc">Web & Apps</small><span id="hct">Built to scale.</span></div><div style="font-size:.7rem;color:rgba(17,17,17,.45)">Tap to see more →</div></div></div></div></div></div>
 <div class="shell sb"><span>Serving US clients</span><span>Remote-first, worldwide</span><span>Scroll ↓</span></div></section>
@@ -122,7 +328,18 @@
 <section><ul class="shell cb"><li class="rv lt" style="background:var(--sf)">We</li><li class="rv" style="--d:120ms;background:linear-gradient(135deg,#cf8047,#97501f);color:#fff">Build</li><li class="rv" style="--d:240ms;background:var(--ink);color:#fff">→</li><li class="rv" style="--d:360ms;background:rgba(241,240,238,.6);color:rgba(17,17,17,.35)">Better</li></ul></section>
 
 <section id="services" class="sec"><div class="shell"><span class="eb rv">Services</span><h2 class="rv" style="margin:1.25rem 0 3rem;max-width:16ch">What we do best</h2>
-<ul class="sv" id="sv"></ul></div></section>
+<ul class="sv" id="sv">
+<li class="rv" id="service-business-consulting" style="--d:0ms"><a href="#contact"><b>01</b><div class="sd"><h3>Business Consulting</h3><p>Clear strategy and direction for ambitious teams.</p></div><i>↗</i></a></li>
+<li class="rv" id="service-web-development" style="--d:60ms"><a href="web-design/"><b>02</b><div class="sd"><h3>Web Development</h3><p>Fast, scalable websites and web apps — WordPress, Shopify or fully custom.</p></div><i>↗</i></a></li>
+<li class="rv" id="service-e-commerce" style="--d:120ms"><a href="#contact"><b>03</b><div class="sd"><h3>E-commerce</h3><p>Online stores that sell: product setup, payments, shipping and conversion-focused design.</p></div><i>↗</i></a></li>
+<li class="rv" id="service-mobile-app-development" style="--d:180ms"><a href="#contact"><b>04</b><div class="sd"><h3>Mobile App Development</h3><p>iOS and Android apps built to perform and built to last.</p></div><i>↗</i></a></li>
+<li class="rv" id="service-ui-ux-design" style="--d:240ms"><a href="#contact"><b>05</b><div class="sd"><h3>UI/UX Design</h3><p>Interfaces that feel effortless, look sharp and are easy to use.</p></div><i>↗</i></a></li>
+<li class="rv" id="service-digital-marketing-seo" style="--d:300ms"><a href="#contact"><b>06</b><div class="sd"><h3>Digital Marketing &amp; SEO</h3><p>Social media, ads and search growth that brings in real customers.</p></div><i>↗</i></a></li>
+<li class="rv" id="service-branding-graphic-design" style="--d:360ms"><a href="#contact"><b>07</b><div class="sd"><h3>Branding &amp; Graphic Design</h3><p>Logos, identities and creative that make your brand stand out.</p></div><i>↗</i></a></li>
+<li class="rv" id="service-video-editing-ugc-ads" style="--d:420ms"><a href="#contact"><b>08</b><div class="sd"><h3>Video Editing &amp; UGC Ads</h3><p>Scroll-stopping UGC ads, reels and promo edits for Meta, TikTok and YouTube.</p></div><i>↗</i></a></li>
+<li class="rv" id="service-2d-3d-animation" style="--d:480ms"><a href="#contact"><b>09</b><div class="sd"><h3>2D/3D Animation</h3><p>Explainers, motion graphics and 3D product visuals that bring ideas to life.</p></div><i>↗</i></a></li>
+<li class="rv" id="service-ai-automation" style="--d:540ms"><a href="ai-automation/"><b>10</b><div class="sd"><h3>AI Automation</h3><p>Chatbots, workflows and AI tools that save hours and cut costs.</p></div><i>↗</i></a></li>
+</ul></div></section>
 
 <section id="works" class="sec" style="padding-top:0"><div class="shell"><div style="text-align:center"><span class="eb rv" style="border:1px solid var(--line);border-radius:9999px;padding:.375rem 1rem">Portfolio</span><h2 class="rv" style="margin-top:1rem">Selected Work</h2></div>
 <div class="mqs"><div class="mr"><div class="mtk" id="m1"></div></div><div class="mr"><div class="mtk rev" id="m2"></div></div></div></div></section>
@@ -133,6 +350,15 @@
 <a class="pill ol" href="#contact" style="margin-top:1rem">Work with us <i>→</i></a></div>
 <ul class="al rv" style="--d:100ms"><li><b>01</b><div><h4>Strategy first</h4><p>We plan before we build, so every piece of work supports a clear business goal.</p></div></li><li><b>02</b><div><h4>Creative and technical</h4><p>Designers, developers, video editors and marketers working together as one team.</p></div></li><li><b>03</b><div><h4>Clear communication</h4><p>Honest timelines, regular updates and a reply within one business day.</p></div></li><li><b>04</b><div><h4>Built for results</h4><p>Fast, scalable and measurable work that keeps performing after launch.</p></div></li></ul></div></section>
 
+
+<section id="faq" class="sec"><div class="shell"><span class="eb rv">FAQ</span><h2 class="rv" style="margin:1.25rem 0 2rem">Questions about Tech Phase</h2><div class="svc-faq">
+<details><summary>What does Tech Phase do?</summary><p>Tech Phase is a tech agency and business consultant. We design and build websites, online stores and mobile apps, and we also handle UI/UX design, SEO and digital marketing, branding, UGC ads and video editing, 2D/3D animation, AI automation and business consulting.</p></details>
+<details><summary>Who does Tech Phase work with?</summary><p>We work directly with US founders, small businesses and agencies. Most of our work is for businesses that want a website, app or automation that brings in calls, bookings and sales.</p></details>
+<details><summary>Where is Tech Phase based, and how do you work with US clients?</summary><p>Tech Phase is a Pakistan-based sole proprietorship that works with clients remotely. We overlap live with US Eastern mornings on weekdays for calls, work asynchronously outside that window, and reply within one business day.</p></details>
+<details><summary>How does pricing work?</summary><p>Every project gets a written scope and a quote in US dollars before work starts. Larger projects are split into milestones, so you pay as work is delivered.</p></details>
+<details><summary>Do I own the work you deliver?</summary><p>Yes. Once the work is paid for, the code, designs and accounts are yours.</p></details>
+<details><summary>How do I start a project?</summary><p>Email info@techphase.net, call +1 (260) 239-4557 or use the contact form. We start with a short discovery call about your goals, then send a written scope and quote.</p></details>
+</div></div></section>
 
 <section id="contact" class="sec" style="padding-top:0"><div class="shell ct"><div class="cl rv"><span class="eb">Contact</span><h2 style="margin:1.25rem 0 2rem">Let's build your next phase.</h2>
 <a class="r" href="mailto:info@techphase.net"><small>Email</small>info@techphase.net</a><a class="r" href="tel:+12602394557" style="border-bottom:1px solid var(--line)"><small>Call us</small>+1 (260) 239-4557</a>
