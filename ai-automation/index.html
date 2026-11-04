@@ -34,6 +34,12 @@
   "@context": "https://schema.org",
   "@graph": [
     {
+      "@type": ["Organization", "ProfessionalService"],
+      "@id": "https://techphase.net/#org",
+      "name": "Tech Phase",
+      "url": "https://techphase.net/"
+    },
+    {
       "@type": "WebPage",
       "@id": "https://techphase.net/ai-automation/#webpage",
       "url": "https://techphase.net/ai-automation/",
@@ -62,10 +68,7 @@
       "description": "AI automation with n8n, Zapier and AI chatbots for US small businesses and agencies: lead follow-up, booking and reminders, inbox triage, reporting, document workflows and Zapier to n8n migrations.",
       "url": "https://techphase.net/ai-automation/",
       "provider": {
-        "@type": "Organization",
-        "@id": "https://techphase.net/#org",
-        "name": "Tech Phase",
-        "url": "https://techphase.net/"
+        "@id": "https://techphase.net/#org"
       },
       "areaServed": {
         "@type": "Country",
@@ -200,6 +203,38 @@
             "@type": "Answer",
             "text": "Tech Phase is a Pakistan-based sole proprietorship that works with US clients remotely. Email info@techphase.net or call +1 (260) 239-4557."
           }
+        },
+        {
+          "@type": "Question",
+          "name": "What should a small business automate first?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Start with the repetitive work closest to revenue: replying to new leads, booking and reminders, inbox triage and weekly reporting. On a discovery call we point out the workflows likely to save the most time."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Will an automation message my customers or move money without my approval?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "No. Anything customer-facing or financial keeps human approval until you're confident in it, and errors alert you instead of failing silently."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Who owns the automations you build?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "You do. Everything runs in accounts you own, and at handover you get the workflows, written notes and a short video walkthrough."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Can you move our Zapier workflows to n8n?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes. We map each Zapier workflow, rebuild it in n8n and test it before switching. Moving heavy workflows to n8n can lower task-based costs and give you more control."
+          }
         }
       ]
     }
@@ -223,7 +258,10 @@
 <div class="svc-facts"><span>n8n and Zapier</span><span>AI chatbots</span><span>Runs in your accounts</span><span>Quotes in USD</span></div>
 </div></section>
 <section class="svc-sec"><div class="shell"><span class="eb">The problem</span><h2>Small businesses lose leads to slow replies, not a lack of tools</h2><p class="intro">Missed calls, late follow-ups and manual admin cost small businesses real customers. Tech Phase builds practical automations with n8n, Zapier and AI, so leads get answered, appointments get booked and reports get written without anyone copying and pasting.</p></div></section><section class="svc-sec" id="automate"><div class="shell"><span class="eb">What we automate</span><h2>Workflows we build</h2><div class="svc-grid c3"><div class="svc-card"><h3>Lead capture and instant follow-up</h3><p>New form, ad or website-chat leads get a quick personalised reply, are added to your CRM and are routed to the right person.</p></div><div class="svc-card"><h3>Booking and reminders</h3><p>Leads book straight into your calendar, with reminders and rescheduling handled automatically.</p></div><div class="svc-card"><h3>AI chatbots and assistants</h3><p>Website and messaging chatbots trained on your services and FAQs, with clear limits and a clean handoff to a human.</p></div><div class="svc-card"><h3>Email and inbox triage</h3><p>Incoming email sorted and summarised, with replies drafted for you to approve.</p></div><div class="svc-card"><h3>Reporting</h3><p>Weekly summaries of leads, sales and ad spend sent to Slack or email, instead of checking five dashboards.</p></div><div class="svc-card"><h3>Document workflows</h3><p>Quotes, proposals, invoices and onboarding packs generated from templates and your CRM data.</p></div><div class="svc-card"><h3>Zapier to n8n migrations</h3><p>Moving heavy Zapier workflows to n8n can lower task-based costs and give you more control. We map, rebuild and test each workflow before switching.</p></div></div></div></section><section class="svc-sec"><div class="shell"><span class="eb">Who it's for</span><h2>Built for service businesses and founders</h2><ul class="svc-list"><li><strong>US small businesses</strong> where speed to lead matters: real estate, home services and HVAC, clinics, consultants and ecommerce.</li><li><strong>Founders</strong> who want automation designed in from day one, not bolted on later.</li></ul></div></section><section class="svc-sec"><div class="shell"><span class="eb">Process</span><h2>How an automation project works</h2><ol class="svc-steps"><li><div><h3>Discovery call</h3><p>You walk us through how leads, bookings and admin flow today. We point out the workflows likely to save the most time.</p></div></li><li><div><h3>Workflow map and quote</h3><p>We write down the current process, the proposed automation, the tools involved and what a human still approves. Then you get a quote in USD.</p></div></li><li><div><h3>Build and test</h3><p>We build in your accounts (n8n cloud or self-hosted, Zapier, your CRM) and test with real examples before anything goes live.</p></div></li><li><div><h3>Launch with guardrails</h3><p>Anything customer-facing or financial keeps human approval until you're confident in it. Errors alert you instead of failing silently.</p></div></li><li><div><h3>Handover</h3><p>You get the workflows, written notes and a short video walkthrough. Everything runs in accounts you own.</p></div></li></ol></div></section><section class="svc-sec"><div class="shell"><span class="eb">Tools</span><h2>Tools we work with</h2><div class="svc-tags"><span>n8n</span><span>Zapier</span><span>AI language-model APIs</span><span>AI chatbots</span><span>Webhooks and REST APIs</span><span>Your CRM, calendar and email tools</span></div></div></section><section class="svc-sec"><div class="shell"><div class="svc-dark" style="padding:3rem 1.5rem"><span class="eb">Our approach</span><h2 style="margin:1rem 0 1.25rem;max-width:22ch">What we won't do</h2><ul class="svc-list"><li>Promise "fully autonomous" agents for jobs that need human judgement.</li><li>Lock you into our accounts or a proprietary platform.</li><li>Send customer messages or move money without your approval rules in place.</li><li>Quote results we can't stand behind. Results depend on your lead volume and process, so we'll tell you honestly what to expect.</li></ul></div></div></section><section class="svc-sec"><div class="shell"><span class="eb">Time zones</span><h2>Working across time zones</h2><p class="intro">We're based in Pakistan and overlap live with US Eastern mornings on weekdays. Pakistan is 9 hours ahead of US Eastern while the US is on daylight time, and 10 hours ahead from 1 November 2026 to 14 March 2027. Builds and testing happen while you're offline, so changes are often ready the next morning.</p></div></section><section class="svc-sec"><div class="shell"><span class="eb">Pricing</span><h2>Get a quote for your workflow</h2><p class="intro">Every automation is different, so we quote after we understand the workflow. Tell us the one task that eats your week and we'll tell you whether it's worth automating and what it would cost.</p><p><a class="pill dk" href="#quote">Get a quote <i>→</i></a></p></div></section><section class="svc-sec"><div class="shell"><span class="eb">Work</span><h2>See how we work</h2><div class="svc-grid"><div class="svc-card"><h3>Sample work</h3><p>Browse AI automation and chatbot samples in the <a href="../#works">portfolio gallery</a> on our homepage.</p></div><div class="svc-card"><h3>Walkthrough on a call</h3><p>Ask for a walkthrough of recent builds. We will show the work and explain exactly what we did and who did it.</p></div></div></div></section>
-<section id="faq" class="svc-sec"><div class="shell"><span class="eb">FAQ</span><h2 style="margin:1rem 0 2rem">AI automation questions</h2><div class="svc-faq"><details><summary>What does an AI automation agency actually do?</summary><p>We find repetitive steps in your business, such as replying to leads, booking, data entry and reporting, and connect your tools so those steps run automatically, using AI where it helps, like drafting replies or answering FAQs.</p></details><details><summary>n8n or Zapier: which is better for a small business?</summary><p>Zapier is quickest for simple workflows. n8n suits complex or high-volume workflows and can cost less at scale. We recommend one based on your volume and budget.</p></details><details><summary>Do I need to change my CRM or tools?</summary><p>Usually not. We build around the tools you already use.</p></details><details><summary>Is my customer data safe?</summary><p>Workflows run in accounts you own, and we only ask for the access each workflow needs. You can remove our access after handover.</p></details><details><summary>Can you build an AI chatbot for my website?</summary><p>Yes. It&#x27;s trained on your content and rules, with a handoff to a human and clear limits on what it can promise.</p></details><details><summary>Where are you located?</summary><p>Tech Phase is a Pakistan-based sole proprietorship that works with US clients remotely. Email info@techphase.net or call +1 (260) 239-4557.</p></details></div></div></section>
+<section id="faq" class="svc-sec"><div class="shell"><span class="eb">FAQ</span><h2 style="margin:1rem 0 2rem">AI automation questions</h2><div class="svc-faq"><details><summary>What does an AI automation agency actually do?</summary><p>We find repetitive steps in your business, such as replying to leads, booking, data entry and reporting, and connect your tools so those steps run automatically, using AI where it helps, like drafting replies or answering FAQs.</p></details><details><summary>n8n or Zapier: which is better for a small business?</summary><p>Zapier is quickest for simple workflows. n8n suits complex or high-volume workflows and can cost less at scale. We recommend one based on your volume and budget.</p></details><details><summary>Do I need to change my CRM or tools?</summary><p>Usually not. We build around the tools you already use.</p></details><details><summary>Is my customer data safe?</summary><p>Workflows run in accounts you own, and we only ask for the access each workflow needs. You can remove our access after handover.</p></details><details><summary>Can you build an AI chatbot for my website?</summary><p>Yes. It&#x27;s trained on your content and rules, with a handoff to a human and clear limits on what it can promise.</p></details><details><summary>Where are you located?</summary><p>Tech Phase is a Pakistan-based sole proprietorship that works with US clients remotely. Email info@techphase.net or call +1 (260) 239-4557.</p></details><details><summary>What should a small business automate first?</summary><p>Start with the repetitive work closest to revenue: replying to new leads, booking and reminders, inbox triage and weekly reporting. On a discovery call we point out the workflows likely to save the most time.</p></details>
+<details><summary>Will an automation message my customers or move money without my approval?</summary><p>No. Anything customer-facing or financial keeps human approval until you're confident in it, and errors alert you instead of failing silently.</p></details>
+<details><summary>Who owns the automations you build?</summary><p>You do. Everything runs in accounts you own, and at handover you get the workflows, written notes and a short video walkthrough.</p></details>
+<details><summary>Can you move our Zapier workflows to n8n?</summary><p>Yes. We map each Zapier workflow, rebuild it in n8n and test it before switching. Moving heavy workflows to n8n can lower task-based costs and give you more control.</p></details></div></div></section>
 <section id="quote" class="svc-sec"><div class="shell ct"><div class="cl"><span class="eb">Get a quote</span><h2 style="margin:1.25rem 0 1.25rem">Find the hours you're losing</h2>
 <p>Tell us one workflow that eats your week. We'll tell you whether it's worth automating and send a quote in USD.</p>
 <a class="r" href="mailto:info@techphase.net"><small>Email</small>info@techphase.net</a><a class="r" href="tel:+12602394557" style="border-bottom:1px solid var(--line)"><small>Call us</small>+1&nbsp;(260)&nbsp;239&#8209;4557</a>

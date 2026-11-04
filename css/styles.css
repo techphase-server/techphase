@@ -324,3 +324,12 @@ body.legal .not-found .miss{display:flex;flex-direction:column;align-items:flex-
 body.legal .not-found .miss a{display:inline-flex;align-items:center;gap:.45rem;padding:.4rem 0;font-weight:500}
 body.legal .not-found .miss a:hover{color:var(--ac)}
 body.legal .not-found .miss a::after{content:"→";color:var(--ac)}}
+/* FAQ accordion, shared with service pages and used on the homepage. */
+.svc-faq{max-width:52rem}
+.svc-faq details{border-top:1px solid var(--line);padding:1.1rem 0}
+.svc-faq details:last-child{border-bottom:1px solid var(--line)}
+.svc-faq summary{cursor:pointer;font-size:1.1rem;font-weight:600;list-style:none;display:flex;justify-content:space-between;gap:1rem}
+.svc-faq summary::-webkit-details-marker{display:none}
+.svc-faq summary:after{content:"+";color:var(--ac);font-weight:500}
+.svc-faq details[open] summary:after{content:"–"}
+.svc-faq details p{margin-top:.75rem;line-height:1.65;color:rgba(17,17,17,.75)}

@@ -1,17 +1,60 @@
 # robots.txt for https://techphase.net
+# Default: every crawler may crawl the whole site.
 User-agent: *
 Allow: /
 
-# AI crawlers: allowed (helps AI-search visibility). Remove a line to opt out.
-User-agent: GPTBot
+# --- Search engines ---
+User-agent: Googlebot
 Allow: /
+
+User-agent: Bingbot
+Allow: /
+
+# --- AI search / answer engines (these power cited answers) ---
 User-agent: OAI-SearchBot
 Allow: /
-User-agent: ClaudeBot
+
+User-agent: ChatGPT-User
 Allow: /
+
 User-agent: PerplexityBot
 Allow: /
+
+User-agent: Perplexity-User
+Allow: /
+
+User-agent: Claude-SearchBot
+Allow: /
+
+User-agent: Claude-User
+Allow: /
+
+User-agent: DuckAssistBot
+Allow: /
+
+# --- AI training crawlers: allowed ---
+# Allowing these lets models learn about Tech Phase. To opt out of training,
+# change "Allow: /" to "Disallow: /" for any of them. Opting out of
+# Google-Extended does NOT affect Google Search or AI Overviews ranking.
+User-agent: GPTBot
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
 User-agent: Google-Extended
+Allow: /
+
+User-agent: Applebot
+Allow: /
+
+User-agent: Applebot-Extended
+Allow: /
+
+User-agent: CCBot
+Allow: /
+
+User-agent: Meta-ExternalAgent
 Allow: /
 
 Sitemap: https://techphase.net/sitemap.xml

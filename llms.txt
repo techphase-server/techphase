@@ -1,6 +1,6 @@
 # Tech Phase
 
-> Tech Phase (techphase.net) is a Pakistan-based sole proprietorship. It works directly with US founders, small businesses and agencies. Services: web design and development (WordPress, Shopify, Webflow, custom), app and MVP development, UI/UX design, SEO, UGC ads and video editing, 2D/3D animation, AI automation (n8n, Zapier, AI chatbots) and technology consulting.
+> Tech Phase (techphase.net, also written TechPhase) is a Pakistan-based, remote-first tech agency and business consultant. It works directly with US founders, small businesses and agencies. Services: web design and development (WordPress, Shopify, Webflow, custom), e-commerce, app and MVP development, UI/UX design, SEO and digital marketing, branding, UGC ads and video editing, 2D/3D animation, AI automation (n8n, Zapier, AI chatbots) and business consulting.
 
 Key facts:
 - Location: Pakistan (remote delivery; no US office).
@@ -8,20 +8,24 @@ Key facts:
 - Working hours: live overlap with US Eastern mornings on weekdays; asynchronous work outside that window.
 - Pricing: a written scope and a quote in USD per project; no public price list.
 - Ownership: clients own code, designs and accounts once paid.
+- Replies: within one business day.
 - Contact: info@techphase.net · +1 (260) 239-4557 · https://techphase.net/#contact
+- Profiles: https://www.linkedin.com/company/tech-phase · https://x.com/thetechphase · https://www.facebook.com/techphase.net · https://www.instagram.com/thetechphase/
+- Not to be confused with unrelated companies that share the name (for example techphase.jp in Japan, TechPhase Solutions in Ghana, or techphase.co).
 
 ## Services
-- [AI automation](https://techphase.net/ai-automation/): n8n, Zapier and AI chatbots for lead follow-up, booking, inbox triage, reporting and Zapier to n8n migrations
+- [AI automation](https://techphase.net/ai-automation/): n8n, Zapier and AI chatbots for lead follow-up, booking, inbox triage, reporting, document workflows and Zapier to n8n migrations
 - [Web design](https://techphase.net/web-design/): custom, mobile-first, SEO-ready websites and redesigns for US small businesses on WordPress, Shopify, Webflow or custom code
+- [All services](https://techphase.net/#services): e-commerce, mobile apps, UI/UX, SEO and digital marketing, branding, UGC ads and video editing, 2D/3D animation, business consulting
+
+## Guides
+- [Blog](https://techphase.net/blog/): guides for small businesses on AI automation and custom website design
+- [AI Automation for Small Businesses: What to Automate First](https://techphase.net/blog/ai-automation-for-small-businesses/): which workflows to automate first, n8n versus Zapier, and how to pick an AI automation agency
+- [Custom Website Design for Small Business: A Practical Guide](https://techphase.net/blog/custom-website-design-small-business/): what custom website design includes, how to choose a platform, what affects cost, and how to redesign safely
 
 ## Pages
-- [Home](https://techphase.net/): overview of services and how Tech Phase works with founders and small businesses
+- [Home](https://techphase.net/): overview of services and how Tech Phase works with founders, small businesses and agencies
 - [Privacy Policy](https://techphase.net/privacy-policy/)
 - [Terms of Service](https://techphase.net/terms/)
 - [Refund Policy](https://techphase.net/refund-policy/)
 - [Cookie Notice](https://techphase.net/cookie-notice/)
-
-## Blog
-- [Blog](https://techphase.net/blog/): guides for small businesses on AI automation and custom website design
-- [AI Automation for Small Businesses: What to Automate First](https://techphase.net/blog/ai-automation-for-small-businesses/): which workflows to automate first, n8n versus Zapier, and how to pick an AI automation agency
-- [Custom Website Design for Small Business: A Practical Guide](https://techphase.net/blog/custom-website-design-small-business/): what custom website design includes, how to choose a platform, what affects cost, and how to redesign safely
