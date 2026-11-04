@@ -1,30 +1,7 @@
 <!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<!-- Google tag (gtag.js). Consent Mode v2 defaults are set before gtag.js loads. -->
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('consent', 'default', {
-    ad_storage: 'denied',
-    ad_user_data: 'denied',
-    ad_personalization: 'denied',
-    analytics_storage: 'denied',
-    functionality_storage: 'denied',
-    personalization_storage: 'denied',
-    security_storage: 'denied',
-    wait_for_update: 500
-  });
-  gtag('set', 'ads_data_redaction', true);
-  try {
-    if (localStorage.getItem('tp-cookie-consent') === 'accepted') {
-      gtag('consent', 'update', { analytics_storage: 'granted' });
-    }
-  } catch (e) {}
-</script>
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-7TH4N1HYDP"></script>
-<script>
-  gtag('js', new Date());
-  gtag('config', 'G-7TH4N1HYDP');
-</script>
+<!-- Consent defaults, then the shared loader. EU-style visitors do not request gtag.js until Accept. -->
+<script src="js/consent-defaults.js"></script>
+<script src="js/ga-loader.js"></script>
 <title>Tech Phase — Tech Agency &amp; Business Consultant</title>
 <meta name="description" content="Pakistan-based tech agency for US founders and small businesses: websites, apps, AI automation, UGC ads and animation. Fixed USD quotes, US-morning calls.">
 <link rel="canonical" href="https://techphase.net/">
@@ -96,8 +73,6 @@
 }
 </script>
 <meta name="theme-color" content="#0a0a0a">
-<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Onest:wght@400;500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="css/styles.css"></head><body>
 <a class="sr" href="#main">Skip to content</a>
 <div id="ld"><div style="text-align:center"><img src="assets/img/loader-logo.png" alt="Tech Phase" style="margin:auto;width:8rem;filter:invert(1)"></div><div class="t"><div class="tr"><div class="f" id="lf"></div></div><div class="r"><span>Loading</span><span id="lc">000</span></div></div></div>
@@ -151,7 +126,7 @@
 <div class="fg"><div><div class="brand"><img class="inv" src="assets/img/logo-header.png" alt="">Tech Phase</div><p style="margin-top:1rem;max-width:20rem;font-size:.875rem;color:rgba(255,255,255,.55)">Tech agency & business consultant — brands, products and the systems that connect them.</p></div>
 <div><h4>Services</h4><ul><li><a href="web-design/">Web Design</a></li><li><a href="ai-automation/">AI Automation</a></li></ul></div>
 <div><h4>Company</h4><ul><li><a href="#about">About</a></li><li><a href="#works">Work</a></li><li><a href="#contact">Contact</a></li></ul></div>
-<div><h4>Legal</h4><ul><li><a href="terms/">Terms of Service</a></li><li><a href="privacy-policy/">Privacy Policy</a></li><li><a href="refund-policy/">Refund Policy</a></li><li><a href="cookie-notice/">Cookie Notice</a></li><li><a href="#cookie-settings" id="cookie-settings">Cookie settings</a></li></ul></div>
+<div><h4>Legal</h4><ul><li><a href="terms/">Terms of Service</a></li><li><a href="privacy-policy/">Privacy Policy</a></li><li><a href="refund-policy/">Refund Policy</a></li><li><a href="cookie-notice/">Cookie Notice</a></li><li><a href="#cookie-settings" id="cookie-settings">Your privacy choices</a></li></ul></div>
 <div><h4>Get in touch</h4><ul><li><a href="mailto:info@techphase.net">info@techphase.net</a></li><li><a href="tel:+12602394557" aria-label="Call us +1 (260) 239-4557">+1 (260) 239-4557</a></li></ul><div class="so" id="so2"></div></div></div>
 <div class="lg"><span>© 2026 Tech Phase. All rights reserved.</span><span><a href="privacy-policy/">Privacy</a> · <a href="terms/">Terms</a> · <a href="refund-policy/">Refunds</a> · <a href="cookie-notice/">Cookies</a></span></div></div></footer>
 </div>
@@ -161,7 +136,7 @@
 <p class="sum"><a class="pill dk" href="terms/">Read the Terms of Service <i>→</i></a></p></div></div>
 
 <div class="pg" id="privacy"><div class="shell"><a href="#home" class="eb">← Back home</a><h2 class="pgt" style="margin-top:1rem">Privacy Policy</h2><p>Last updated: 23 October 2026</p>
-<p>This policy explains how TechPhase collects, uses and protects personal data when you visit the site, contact us, use the chat assistant or work with us. If you accept analytics cookies, Google Analytics 4 collects anonymous usage data such as pages visited. We do not sell your personal data.</p>
+<p>This policy explains how TechPhase collects, uses and protects personal data when you visit the site, contact us, use the chat assistant or work with us. Google Analytics collects usage data such as pages visited and a cookie identifier. For visitors in the EU/EEA, UK and Switzerland it stays off unless they accept; elsewhere it is on by default until turned off under Your privacy choices. We do not sell your personal data.</p>
 <p class="sum"><a class="pill dk" href="privacy-policy/">Read the Privacy Policy <i>→</i></a></p></div></div>
 
 <div class="pg" id="refund"><div class="shell"><a href="#home" class="eb">← Back home</a><h2 class="pgt" style="margin-top:1rem">Refund &amp; Cancellation Policy</h2><p>Last updated: 23 October 2026</p>
