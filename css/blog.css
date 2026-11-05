@@ -30,6 +30,7 @@ body.blog .post strong{color:var(--fg);font-weight:600}
 body.blog .post a{color:var(--ac);text-decoration:underline;text-underline-offset:.12em;overflow-wrap:anywhere}
 body.blog .crumbs{overflow-wrap:anywhere}
 body.blog .crumbs li{max-width:100%}
+@media(max-width:1023px){body.blog .blog-list a{padding-right:4.25rem}}
 @media(max-width:640px){
 body.blog .svc-hero h1{font-size:1.85rem}
 body.blog .post h2{font-size:1.28rem}
