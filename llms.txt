@@ -23,6 +23,10 @@ Key facts:
 - [Blog](https://techphase.net/blog/): guides for small businesses on AI automation and custom website design
 - [AI Automation for Small Businesses: What to Automate First](https://techphase.net/blog/ai-automation-for-small-businesses/): which workflows to automate first, n8n versus Zapier, and how to pick an AI automation agency
 - [Custom Website Design for Small Business: A Practical Guide](https://techphase.net/blog/custom-website-design-small-business/): what custom website design includes, how to choose a platform, what affects cost, and how to redesign safely
+- [WordPress vs Shopify vs Webflow vs Custom Code: Which Is Best for a Small Business?](https://techphase.net/blog/wordpress-vs-shopify-vs-webflow-vs-custom/): comparison of WordPress, Shopify, Webflow and custom code for small businesses: cost model, editing, ecommerce, SEO and lock-in
+- [Website Redesign SEO Checklist: Keep Your Rankings with 301 Redirects](https://techphase.net/blog/website-redesign-seo-checklist/): step-by-step checklist for keeping search rankings through a redesign: URL inventory, 301 redirect mapping, launch checks and monitoring
+- [Offshore Web Agency vs US Agency vs Freelancer: An Honest Comparison](https://techphase.net/blog/offshore-vs-us-agency-vs-freelancer/): honest comparison of offshore agencies, US agencies and freelancers: cost, communication, time zones, IP ownership and risk
+- [White-Label Web Development: How US Agencies Choose a Partner (Checklist)](https://techphase.net/blog/white-label-web-development-partner-checklist/): checklist for US agencies choosing a white-label web development partner: confidentiality, quality, communication, ownership and pricing
 
 ## Pages
 - [Home](https://techphase.net/): overview of services and how Tech Phase works with founders, small businesses and agencies
