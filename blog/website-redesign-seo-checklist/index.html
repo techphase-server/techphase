@@ -7,7 +7,7 @@
 <script src="../../js/consent-defaults.js"></script>
 <script src="../../js/ga-loader.js"></script>
 <title>Website Redesign SEO Checklist: Keep Rankings with 301s</title>
-<meta name="description" content="A step-by-step redesign SEO checklist for small businesses: URL inventory, 301 redirect mapping, launch-day checks and what to monitor after launch.">
+<meta name="description" content="Website redesign SEO checklist for small businesses: URL inventory, 301 redirect mapping, bulk redirect tests, launch-day checks and post-launch monitoring.">
 <link rel="canonical" href="https://techphase.net/blog/website-redesign-seo-checklist/">
 <meta name="robots" content="index, follow, max-image-preview:large">
 <meta property="og:type" content="article">
@@ -15,17 +15,17 @@
 <meta property="og:locale" content="en_US">
 <meta property="og:url" content="https://techphase.net/blog/website-redesign-seo-checklist/">
 <meta property="og:title" content="Website Redesign SEO Checklist: Keep Rankings with 301s">
-<meta property="og:description" content="A step-by-step redesign SEO checklist for small businesses: URL inventory, 301 redirect mapping, launch-day checks and what to monitor after launch.">
+<meta property="og:description" content="Website redesign SEO checklist for small businesses: URL inventory, 301 redirect mapping, bulk redirect tests, launch-day checks and post-launch monitoring.">
 <meta property="og:image" content="https://techphase.net/assets/img/og-image.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta property="og:image:alt" content="Tech Phase — websites, apps, design, marketing and AI automation.">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Website Redesign SEO Checklist: Keep Rankings with 301s">
-<meta name="twitter:description" content="A step-by-step redesign SEO checklist for small businesses: URL inventory, 301 redirect mapping, launch-day checks and what to monitor after launch.">
+<meta name="twitter:description" content="Website redesign SEO checklist for small businesses: URL inventory, 301 redirect mapping, bulk redirect tests, launch-day checks and post-launch monitoring.">
 <meta name="twitter:image" content="https://techphase.net/assets/img/og-image.png">
 <meta property="article:published_time" content="2026-11-05">
-<meta property="article:modified_time" content="2026-11-05">
+<meta property="article:modified_time" content="2026-11-15">
 <meta property="article:author" content="Tech Phase">
 <script type="application/ld+json">
 {
@@ -39,9 +39,9 @@
         "@id": "https://techphase.net/blog/website-redesign-seo-checklist/"
       },
       "headline": "Website Redesign SEO Checklist: Keep Your Rankings with 301 Redirects",
-      "description": "A step-by-step redesign SEO checklist for small businesses: URL inventory, 301 redirect mapping, launch-day checks and what to monitor after launch.",
+      "description": "Website redesign SEO checklist for small businesses: URL inventory, 301 redirect mapping, bulk redirect tests, launch-day checks and post-launch monitoring.",
       "datePublished": "2026-11-05",
-      "dateModified": "2026-11-05",
+      "dateModified": "2026-11-15",
       "inLanguage": "en",
       "image": "https://techphase.net/assets/img/og-image.png",
       "url": "https://techphase.net/blog/website-redesign-seo-checklist/",
@@ -105,6 +105,14 @@
             "@type": "Answer",
             "text": "Only if you're moving to a new domain. For a redesign on the same domain, 301 redirects, an updated sitemap and Search Console monitoring are enough."
           }
+        },
+        {
+          "@type": "Question",
+          "name": "Should I change my URLs during a redesign?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Only when there is a clear benefit, such as fixing messy or duplicate URLs. Every changed URL needs a 301 redirect and updated internal links, so keeping URLs that already work is the lowest-risk option."
+          }
         }
       ]
     }
@@ -129,7 +137,7 @@
 <nav class="crumbs" aria-label="Breadcrumb"><ol><li><a href="../../">Home</a></li><li><a href="../">Blog</a></li><li aria-current="page">Website Redesign SEO Checklist</li></ol></nav>
 <p style="margin-top:2rem"><span class="eb">Blog</span></p>
 <h1>Website Redesign SEO Checklist: Keep Your Rankings with 301 Redirects</h1>
-<p class="post-meta"><time datetime="2026-11-05">5 November 2026</time> · Tech Phase</p>
+<p class="post-meta"><time datetime="2026-11-05">5 November 2026</time> · Updated <time datetime="2026-11-15">15 November 2026</time> · Tech Phase</p>
 </div></section>
 <article class="post"><div class="shell">
 <p class="answer"><strong>Short answer:</strong> To keep your rankings through a redesign, first list every URL that gets traffic or links. Then map each one to its closest new page and set up permanent 301 redirects on the server. Keep your best content, titles and internal links, and launch with an updated sitemap. Afterwards, monitor Search Console for errors. Google says to keep redirects for as long as possible, generally at least a year.</p>
@@ -228,7 +236,7 @@
 <li><strong>Titles and headings.</strong> Keep the target query in the title and H1 of pages that rank for it.</li>
 <li><strong>Internal links.</strong> Key pages should be easy to reach from the menu and from related pages.</li>
 <li><strong>Canonical tags</strong> pointing at the new preferred URLs (<a href="https://developers.google.com/search/docs/crawling-indexing/consolidate-duplicate-urls" target="_blank" rel="noopener noreferrer">Google on duplicate URLs</a>).</li>
-<li><strong>Structured data</strong>, such as organisation, local business, FAQ or product, carried over or improved.</li>
+<li><strong>Structured data</strong>, such as organization, local business, FAQ or product, carried over or improved.</li>
 <li><strong>Mobile speed and usability</strong>, tested on staging before launch.</li>
 <li><strong>No accidental noindex.</strong> Staging sites often block search engines, so remove that at launch.</li>
 </ul>
@@ -248,8 +256,43 @@
 <li><strong>Fix fast:</strong> every new 404 that had traffic or links gets a redirect.</li>
 <li><strong>Keep the redirects.</strong> Google's site-move guide says to keep them for as long as possible, generally at least 1 year. For a domain change, keep the old domain registered too.</li>
 </ul>
+<h2>How should you carry over titles and meta descriptions?</h2>
+<p>Titles and meta descriptions are easy to lose in a redesign, because new templates often fill them with defaults. Treat them as content:</p>
+<ul>
+<li><strong>Copy them across first.</strong> Move the existing title and meta description of every ranking page to its new URL before you change anything.</li>
+<li><strong>Keep the target query.</strong> If a page ranks for a phrase, keep that phrase near the start of the title.</li>
+<li><strong>Fix the weak ones.</strong> Rewrite titles that are duplicated, missing or just the company name, and write meta descriptions that summarize the page in a sentence or two.</li>
+<li><strong>Check in bulk.</strong> A crawl of the staging site will show missing, duplicate or default titles before launch.</li>
+</ul>
+<p>For example, a service page titled only "Services | Company Name" could become "Kitchen Remodeling in [City] | Company Name", if that is what the page is about and what people search for. This example is an illustration, not a client case.</p>
+<h2>How do you test redirects in bulk?</h2>
+<ol>
+<li><strong>Export the old URL list</strong> from your redirect map as a plain text file, one URL per line.</li>
+<li><strong>Crawl the list</strong> with an SEO crawler in list mode, or check each URL's status with a simple script, once the new site is live.</li>
+<li><strong>Confirm three things for every row:</strong> the status code is 301, the destination matches the map, and the destination itself returns 200.</li>
+<li><strong>Fix chains and loops</strong> so every old URL reaches its final page in one hop.</li>
+<li><strong>Re-run the test</strong> after any fix, and again a week after launch.</li>
+</ol>
+<h2>Common website redesign SEO mistakes</h2>
+<ul>
+<li>Launching with the staging site's noindex tag or robots.txt block still in place.</li>
+<li>Redirecting every old URL to the homepage instead of the closest matching page.</li>
+<li>Cutting long, ranking pages down to a few lines because they don't fit the new design.</li>
+<li>Replacing text with images or sliders, so the page has less content for Google to read.</li>
+<li>Forgetting analytics and conversion tracking, so you can't compare before and after.</li>
+<li>Leaving internal links pointing at old URLs, which sends visitors and crawlers through redirects.</li>
+</ul>
 <h2>Should you redesign and change platforms at the same time?</h2>
 <p>You can, but it adds risk because URLs, templates and features all change at once. If you're choosing a new platform, read our <a href="/blog/wordpress-vs-shopify-vs-webflow-vs-custom/">WordPress vs Shopify vs Webflow vs custom code comparison</a> first, and make sure the new platform lets you set server-side 301 redirects in bulk.</p>
+<h2>Website redesign SEO checklist you can copy</h2>
+<p>Use this as a quick checklist for your project. Each item links back to the steps above.</p>
+<ul>
+<li><strong>Before the redesign:</strong> export every URL, export Search Console and analytics data, note pages with backlinks, save old titles and meta descriptions, benchmark speed, and mark each URL keep, merge or remove.</li>
+<li><strong>During the build:</strong> build the 301 redirect map, keep ranking content, keep target queries in titles and H1s, carry over structured data and canonical tags, and test mobile speed on staging.</li>
+<li><strong>Launch day:</strong> test every redirect in bulk, remove staging noindex tags, check robots.txt, submit the new XML sitemap, and confirm analytics, forms and phone links work.</li>
+<li><strong>After launch:</strong> check Search Console daily for two weeks and weekly for three months, redirect any new 404 with traffic or links, and keep the redirects in place.</li>
+</ul>
+<p>If you'd like help with the search side of the project, see our <a href="/#service-digital-marketing-seo">digital marketing and SEO service</a>.</p>
 <h2 id="faq">What else do people ask about redesign SEO?</h2>
 <h3>Will a website redesign hurt my SEO?</h3>
 <p>It can, mostly when old URLs break or ranking content is removed. Mapping every old URL to a new page with 301 redirects, and keeping strong content, protects most of your rankings. Some short-term movement is normal.</p>
@@ -261,15 +304,18 @@
 <p>A 301 is permanent: Google treats the new URL as the one to show in results. A 302 is temporary, so Google may keep showing the old URL. Use 301s for a redesign.</p>
 <h3>Do I need Google&#x27;s Change of Address tool for a redesign?</h3>
 <p>Only if you&#x27;re moving to a new domain. For a redesign on the same domain, 301 redirects, an updated sitemap and Search Console monitoring are enough.</p>
+<h3>Should I change my URLs during a redesign?</h3>
+<p>Only when there is a clear benefit, such as fixing messy or duplicate URLs. Every changed URL needs a 301 redirect and updated internal links, so keeping URLs that already work is the lowest-risk option.</p>
 <h2>How does Tech Phase handle redesigns?</h2>
 <p>Every <a href="/">Tech Phase</a> redesign includes a page-by-page 301 redirect map, designs before code, a staging link before launch and Search Console set up at launch. We build on WordPress, Shopify, Webflow or custom code, and quote <strong>fixed-price packages in USD</strong>.</p>
 <ul>
-<li>See our <a href="/web-design/">web design service</a>.</li>
+<li>See our <a href="/web-design/">web design service</a>, or read <a href="/blog/custom-website-design-small-business/">what custom website design for a small business includes</a>.</li>
+<li>Get help with rankings before and after launch from our <a href="/#service-digital-marketing-seo">SEO service</a>.</li>
 <li>Automate lead follow-up from the new site with <a href="/ai-automation/">AI automation</a>.</li>
 <li>Agencies can hand us redesigns under their own brand through our <a href="/white-label/">white-label service</a>.</li>
 </ul>
-<p><strong><a href="/#contact">Plan a redesign that keeps your rankings →</a></strong> Send us your current site, and we'll reply within one business day.</p>
-<p>You can also email <strong>info@techphase.net</strong>. We reply within one business day.</p>
+<p><strong><a href="/#contact">Book a call to plan your redesign →</a></strong> Send us your current site through the contact form, and we'll reply within one business day to set up a call.</p>
+<p>Prefer a written quote? <a href="/web-design/#quote">Request a web design quote</a>, or email <strong>info@techphase.net</strong>.</p>
 </div></article>
 </main>
 <footer><div class="shell"><div class="fc"><h2 style="max-width:16ch;font-size:3rem">Have a project in mind? Let's get to work.</h2><a class="pill lt" href="../../#contact">Start a project <i aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" focusable="false" aria-hidden="true"><path d="M7 17 17 7M9 7h8v8"/></svg></i></a></div>
@@ -277,7 +323,7 @@
 <div><h4>Services</h4><ul><li><a href="../../web-design/">Web Design</a></li><li><a href="../../ai-automation/">AI Automation</a></li><li><a href="../../white-label/">White Label for Agencies</a></li><li><a href="../../#services">All services</a></li></ul></div>
 <div><h4>Company</h4><ul><li><a href="../../#about">About</a></li><li><a href="../../#works">Work</a></li><li><a href="../../#contact">Contact</a></li><li><a href="../">Blog</a></li></ul></div>
 <div><h4>Legal</h4><ul><li><a href="../../terms/">Terms of Service</a></li><li><a href="../../privacy-policy/">Privacy Policy</a></li><li><a href="../../refund-policy/">Refund Policy</a></li><li><a href="../../cookie-notice/">Cookie Notice</a></li><li><a href="#cookie-settings" id="cookie-settings">Your privacy choices</a></li></ul></div>
-<div><h4>Get in touch</h4><ul><li><a href="mailto:info@techphase.net">info@techphase.net</a></li><li><a href="tel:+12602394557" aria-label="Call us +1 (260) 239-4557">+1&nbsp;(260)&nbsp;239&#8209;4557</a></li></ul><div class="so"><a href="https://www.instagram.com/thetechphase/" target="_blank" rel="noopener noreferrer" aria-label="TechPhase on Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor"/></svg></a><a href="https://www.facebook.com/techphase.net" target="_blank" rel="noopener noreferrer" aria-label="TechPhase on Facebook"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M14 8h3V4h-3a4 4 0 0 0-4 4v3H7v4h3v6h4v-6h3l1-4h-4V8z"/></svg></a><a href="https://www.linkedin.com/company/tech-phase" target="_blank" rel="noopener noreferrer" aria-label="TechPhase on LinkedIn"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M3 9h4v12H3zM5 3a2.2 2.2 0 1 1 0 4.4A2.2 2.2 0 0 1 5 3zM9 9h4v1.7c.6-1.1 2-2 3.8-2 3.6 0 4.2 2.400 4.200 5.500V21h-4v-5.800c0-1.400 0-3.200-2-3.200s-2.200 1.500-2.200 3.100V21H9z"/></svg></a><a href="https://x.com/thetechphase" target="_blank" rel="noopener noreferrer" aria-label="TechPhase on X"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M18.901 1.153h3.68l-8.04 9.19L24 22.846h-7.406l-5.8-7.584-6.638 7.584H.474l8.6-9.83L0 1.154h7.594l5.243 6.932ZM17.61 20.644h2.039L6.486 3.24H4.298Z"/></svg></a></div></div></div>
+<div><h4>Get in touch</h4><ul><li><a href="mailto:info@techphase.net">info@techphase.net</a></li><li><a href="tel:+12602394557" aria-label="Call us +1 (260) 239-4557">+1&nbsp;(260)&nbsp;239&#8209;4557</a></li></ul><div class="so"><a href="https://www.instagram.com/thetechphase/" target="_blank" rel="noopener noreferrer" aria-label="Tech Phase on Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor"/></svg></a><a href="https://www.facebook.com/techphase.net" target="_blank" rel="noopener noreferrer" aria-label="Tech Phase on Facebook"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M14 8h3V4h-3a4 4 0 0 0-4 4v3H7v4h3v6h4v-6h3l1-4h-4V8z"/></svg></a><a href="https://www.linkedin.com/company/tech-phase" target="_blank" rel="noopener noreferrer" aria-label="Tech Phase on LinkedIn"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M3 9h4v12H3zM5 3a2.2 2.2 0 1 1 0 4.4A2.2 2.2 0 0 1 5 3zM9 9h4v1.7c.6-1.1 2-2 3.8-2 3.6 0 4.2 2.400 4.200 5.500V21h-4v-5.800c0-1.400 0-3.200-2-3.200s-2.200 1.500-2.200 3.100V21H9z"/></svg></a><a href="https://x.com/thetechphase" target="_blank" rel="noopener noreferrer" aria-label="Tech Phase on X"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M18.901 1.153h3.68l-8.04 9.19L24 22.846h-7.406l-5.8-7.584-6.638 7.584H.474l8.6-9.83L0 1.154h7.594l5.243 6.932ZM17.61 20.644h2.039L6.486 3.24H4.298Z"/></svg></a></div></div></div>
 <div class="lg"><span>© 2026 Tech Phase. All rights reserved.</span><span><a href="../../privacy-policy/">Privacy</a> · <a href="../../terms/">Terms</a> · <a href="../../refund-policy/">Refunds</a> · <a href="../../cookie-notice/">Cookies</a></span></div></div><img class="fw inv" alt="" src="../../assets/img/watermark.png"></footer>
 </div>
 <div id="mn"><button class="x" id="mx" type="button">✕ Close</button><a href="../../">Home</a><a href="../../#works">Work</a><div class="mn-acc"><button type="button" class="mn-acc-btn" aria-expanded="false" aria-controls="mn-services">Services <svg class="chev" width="12" height="12" viewBox="0 0 12 12" aria-hidden="true"><path d="M2.1 4.2 6 8.1 9.9 4.2" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></button><div class="mn-sub" id="mn-services" hidden><a href="../../#service-business-consulting">Business Consulting</a><a href="../../web-design/">Web Development</a><a href="../../#service-e-commerce">E-commerce</a><a href="../../#service-mobile-app-development">Mobile App Development</a><a href="../../#service-ui-ux-design">UI/UX Design</a><a href="../../#service-digital-marketing-seo">Digital Marketing &amp; SEO</a><a href="../../#service-branding-graphic-design">Branding &amp; Graphic Design</a><a href="../../#service-video-editing-ugc-ads">Video Editing &amp; UGC Ads</a><a href="../../#service-2d-3d-animation">2D/3D Animation</a><a href="../../ai-automation/">AI Automation</a></div></div><a href="../../#about">About</a><a href="../">Blog</a><a href="../../#contact">Contact</a><a class="mn-call" href="tel:+12602394557">Call us · +1&nbsp;(260)&nbsp;239&#8209;4557</a></div>
